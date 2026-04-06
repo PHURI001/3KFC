@@ -1,16 +1,29 @@
+using System;
 using UnityEngine;
-
-public class Abstract_Gun : MonoBehaviour
+using UnityEngine.InputSystem;
+public abstract class Abstract_Gun : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public event Action OnShoot;
+    public event Action OnReload;
+
+    [field: SerializeField] protected Transform shootPoint;
+
+    public abstract void Shoot();
+
+    private void Update()
     {
-        
+        if (Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            Shoot();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    protected void SpawnBullet(GameObject bullet, Vector3 spawnPos, Vector3 dir, float speed)
     {
-        
+        GameObject obj = Instantiate(bullet, spawnPos, Quaternion.LookRotation(dir));
+        if (obj.TryGetComponent<Bullet>(out Bullet comp))
+        {
+            comp.Init(speed);
+        }
     }
 }

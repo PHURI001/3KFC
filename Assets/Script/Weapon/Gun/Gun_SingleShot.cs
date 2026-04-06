@@ -1,16 +1,10 @@
 using UnityEngine;
 
-public class Gun_SingleShot : MonoBehaviour
+public class Gun_SingleShot : Abstract_Gun
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] protected SO_SingelShotGun data;
+    public override void Shoot()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        SpawnBullet(data.Bullet, shootPoint.position, transform.forward, data.Speed);
     }
 }

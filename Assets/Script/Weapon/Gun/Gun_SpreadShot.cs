@@ -1,16 +1,10 @@
 using UnityEngine;
 
-public class Gun_SpreadShot : MonoBehaviour
+public class Gun_SpreadShot : Abstract_Gun
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] protected SO_SpreadShotGun data;
+    public override void Shoot()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        throw new System.NotImplementedException();
     }
 }

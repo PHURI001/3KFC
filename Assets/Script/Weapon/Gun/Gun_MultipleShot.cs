@@ -1,16 +1,19 @@
 using UnityEngine;
-
-public class Gun_MultipleShot : MonoBehaviour
+using System.Collections;
+public class Gun_MultipleShot : Abstract_Gun
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] protected SO_MultipleShotGun data;
+    public override void Shoot()
     {
-        
+        StartCoroutine(SpawnBulletRoutine(data.BulletToSpawn, data.DelayInterval));
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator SpawnBulletRoutine(int bulletToSpawn, float timeInterval)
     {
-        
+        for (int i = 0; i < bulletToSpawn; i++)
+        {
+            SpawnBullet(data.Bullet, shootPoint.position, transform.forward, data.Speed);
+            yield return new WaitForSeconds(timeInterval);
+        }
     }
 }

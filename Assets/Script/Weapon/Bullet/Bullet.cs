@@ -2,15 +2,20 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private float speed = 1.0f;
+
+    public void Init(float _speed)
     {
-        
+        speed = _speed;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        transform.Translate(Vector3.forward * (speed * Time.deltaTime));
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.LogWarning("Bullet -> " + name + "has no damageDealer");
     }
 }
