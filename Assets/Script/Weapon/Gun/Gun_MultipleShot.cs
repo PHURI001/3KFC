@@ -1,9 +1,19 @@
 using UnityEngine;
-
+using System.Collections;
 public class Gun_MultipleShot : Abstract_Gun
 {
-    public override void Shoot(Bullet bullet, Vector3 spawnPos)
+    [SerializeField] protected SO_MultipleShotGun data;
+    public override void Shoot()
     {
-        throw new System.NotImplementedException();
+        StartCoroutine(SpawnBulletRoutine(data.BulletToSpawn, data.DelayInterval));
+    }
+
+    private IEnumerator SpawnBulletRoutine(int bulletToSpawn, float timeInterval)
+    {
+        for (int i = 0; i < bulletToSpawn; i++)
+        {
+            SpawnBullet(data.Bullet, shootPoint.position, transform.forward, data.Speed);
+            yield return new WaitForSeconds(timeInterval);
+        }
     }
 }

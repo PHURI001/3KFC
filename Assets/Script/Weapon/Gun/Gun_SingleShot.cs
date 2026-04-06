@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class Gun_SingleShot : Abstract_Gun
 {
-    public override void Shoot(Bullet bullet, Vector3 spawnPos)
+    [SerializeField] protected SO_SingelShotGun data;
+    public override void Shoot()
     {
-        throw new System.NotImplementedException();
+        SpawnBullet(data.Bullet, shootPoint.position, transform.forward, data.Speed);
     }
 }
