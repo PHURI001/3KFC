@@ -3,8 +3,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public abstract class Abstract_Gun : MonoBehaviour
 {
-    public event Action OnShoot;
-    public event Action OnReload;
+    //public event Action OnShoot;
+    //public event Action OnReload;
 
     [field: SerializeField] protected Transform shootPoint;
 
