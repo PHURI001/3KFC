@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -55,5 +54,22 @@ public class Bullet : MonoBehaviour
         {
             att?.DoExplosive(BaseDamage);
         }
+    }
+
+    public List<ITakeDamage> FindAllItakeDamageInRange(float range)
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, range);
+        List<ITakeDamage> posibleTargets = new List<ITakeDamage>();
+
+        foreach (Collider col in colliders)
+        {
+            if (col == null) continue;
+            if (col.TryGetComponent<ITakeDamage>(out ITakeDamage comp))
+            {
+                posibleTargets.Add(comp);
+            }
+        }
+
+        return posibleTargets;
     }
 }

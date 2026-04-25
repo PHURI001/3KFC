@@ -10,7 +10,7 @@ public class Bullet_Attribute_MoveController
     [SerializeField] private float HomingStrength = 1f;
     
     private Bullet curretBullet;
-    private List<GameObject> targets;
+    private Transform targets;
     public void Init(Bullet newBullet)
     {
         curretBullet = newBullet;
@@ -18,9 +18,15 @@ public class Bullet_Attribute_MoveController
 
     public void Tick(float deltaTime)
     {
-        //curretBullet.RatateTo(CalculateHoming(deltaTime));
+        if (targets == null)
+        {
+            targets = FindNearestTargetInRage(Range, curretBullet.transform.position);
+            return;
+        }
+
+        curretBullet.RatateTo(CalculateHoming(deltaTime,targets));
     }
-/*
+
     private Quaternion CalculateHoming(float deltaTime,Transform target)
     {
         Vector3 dir = target.position;
@@ -31,22 +37,22 @@ public class Bullet_Attribute_MoveController
 
     private Transform FindNearestTargetInRage(float Range, Vector3 startPos)
     {
-        Collider[] colliders = Physics.OverlapSphere(startPos,Range);
-        List<GameObject> posibleTargets = new List<GameObject>();
+        List<ITakeDamage> posibleTargets = curretBullet.FindAllItakeDamageInRange(Range);
 
-        foreach (Collider col in colliders)
+        Transform nearestTarget = null;
+        float closetDistanceSqrMagnitude = float.MaxValue;
+
+        foreach (Transform target in posibleTargets)
         {
-            if (col == null) continue;
-            if (col.TryGetComponent<GameObject>(out GameObject comp))
+            if (!target.gameObject.activeSelf) continue;
+            float disSqrMag = (target.position - curretBullet.transform.position).sqrMagnitude;
+            if (disSqrMag < closetDistanceSqrMagnitude)
             {
-                posibleTargets.Add(comp);
+                closetDistanceSqrMagnitude = disSqrMag;
+                nearestTarget = target;
             }
         }
-#warning NeedTo new definde Target
-        Transform nearestTarget;
-        foreach (GameObject target in posibleTargets)
-        {
 
-        }
-    }*/
+        return nearestTarget;
+    }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
@@ -15,8 +16,11 @@ public class Bullet_Attribute_Explosive
     }
     public void DoExplosive(float rawDamage)
     {
-        Vector3 pos = curretBullet.transform.position;
-        Physics.OverlapSphere(pos, Range);
+        List<ITakeDamage> targets = curretBullet.FindAllItakeDamageInRange(Range);
+        foreach (ITakeDamage target in targets) 
+        {
+            target.TakeDamage(99999);
+        }
 #warning Apply Damage To ITakeDamage
     }
 }

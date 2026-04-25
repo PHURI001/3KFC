@@ -10,4 +10,9 @@ public class Bullet_Attribute_ApplyEffect
         curretBullet = newBullet;
     }
 
+    public void ApplyEffect(ITakeDamage target)
+    {
+#warning Do Apply Effect
+    }
+
 }
