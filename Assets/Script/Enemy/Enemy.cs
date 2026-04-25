@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour
 
         Agent = GetComponent<NavMeshAgent>();
         Agent.speed = Speed;
-        Agent.stoppingDistance = (gameObject.transform.localScale.x * gameObject.transform.localScale.z) + 0.5f;
+        Agent.stoppingDistance = (gameObject.transform.localScale.x + gameObject.transform.localScale.z) / 2;
     }
 
     private void Update()
