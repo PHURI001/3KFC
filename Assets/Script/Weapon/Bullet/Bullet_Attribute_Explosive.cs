@@ -7,8 +7,9 @@ public class Bullet_Attribute_Explosive
 {
     private Bullet curretBullet;
     [Header("Stat")]
-    [SerializeField] private float Range = 1f;
-    [SerializeField] private float DamageMultiply = 1f;
+    [field: SerializeField] public float ExplosiveRange { get; private set; } = 150f;
+    [SerializeField] private float DamageMultiply = 100f;
+    [SerializeField] private GameObject VFX;
 
     public void Init(Bullet newBullet)
     {
@@ -16,11 +17,10 @@ public class Bullet_Attribute_Explosive
     }
     public void DoExplosive(float rawDamage)
     {
-        List<ITakeDamage> targets = curretBullet.FindAllItakeDamageInRange(Range);
-        foreach (ITakeDamage target in targets) 
+        List<ITakeDamage> targets = curretBullet.FindAllItakeDamageInRange(ExplosiveRange);
+        foreach (ITakeDamage target in targets)
         {
-            target.TakeDamage(99999);
+            curretBullet.DoDamage(target, curretBullet.BaseDamage * DamageMultiply);
         }
-#warning Apply Damage To ITakeDamage
     }
 }

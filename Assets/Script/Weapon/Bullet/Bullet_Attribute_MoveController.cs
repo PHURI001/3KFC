@@ -6,8 +6,8 @@ using UnityEngine;
 public class Bullet_Attribute_MoveController
 {
     [Header("Homing")]
-    [SerializeField] private float Range = 1f;
-    [SerializeField] private float HomingStrength = 1f;
+    [field: SerializeField] public float HomingRange { get; private set; } = 5f;
+    [SerializeField] private float HomingStrength = 100f;
     
     private Bullet curretBullet;
     private Transform targets;
@@ -18,9 +18,11 @@ public class Bullet_Attribute_MoveController
 
     public void Tick(float deltaTime)
     {
+        curretBullet.transform.Translate(Vector3.forward * (curretBullet.speed * Time.deltaTime));
+
         if (targets == null)
         {
-            targets = FindNearestTargetInRage(Range, curretBullet.transform.position);
+            targets = FindNearestTargetInRage(HomingRange, curretBullet.transform.position);
             return;
         }
 
@@ -29,7 +31,7 @@ public class Bullet_Attribute_MoveController
 
     private Quaternion CalculateHoming(float deltaTime,Transform target)
     {
-        Vector3 dir = target.position;
+        Vector3 dir = target.position - curretBullet.transform.position;
         Quaternion lookRot = Quaternion.LookRotation(dir);
         Quaternion newRot = Quaternion.RotateTowards(curretBullet.transform.rotation, lookRot, HomingStrength * deltaTime);
         return newRot;
@@ -37,7 +39,7 @@ public class Bullet_Attribute_MoveController
 
     private Transform FindNearestTargetInRage(float Range, Vector3 startPos)
     {
-        List<ITakeDamage> posibleTargets = curretBullet.FindAllItakeDamageInRange(Range);
+        List<Transform> posibleTargets = curretBullet.FindTransformTargetInRange(Range);
 
         Transform nearestTarget = null;
         float closetDistanceSqrMagnitude = float.MaxValue;
