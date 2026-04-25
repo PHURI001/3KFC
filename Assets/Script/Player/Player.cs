@@ -32,8 +32,9 @@ public class Player : MonoBehaviour
         LoadGame();
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(Data_Stats dataDamage)
     {
+        int damage = dataDamage.damage;
         if (currentSheild > 0)
         {
             if (damage <= currentSheild)
