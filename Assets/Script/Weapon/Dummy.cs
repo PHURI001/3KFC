@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Dummy : MonoBehaviour , ITakeDamage
 {
-    public void TakeDamage(int damage)
+    public void TakeDamage(Data_Stats damage)
     {
         Debug.Log("Take Damage");
     }
