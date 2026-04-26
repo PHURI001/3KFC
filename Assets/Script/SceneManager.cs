@@ -5,6 +5,6 @@ public class SceneManager : MonoBehaviour
 {
     public void Play()
     {
-        SceneManager.LoadScene("GameScene");
+        //SceneManager.LoadScene("GameScene");
     }
 }
