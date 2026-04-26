@@ -7,7 +7,7 @@ public class CameraFollower : MonoBehaviour
     [SerializeField] private Player player;
 
     [Header("Camera Settings")]
-    [SerializeField] private float distanceY;
+    [SerializeField] private float distanceY = 12;
 
     private void Awake()
     {
@@ -21,6 +21,6 @@ public class CameraFollower : MonoBehaviour
 
     private void LateUpdate()
     {
-        transform.position = new Vector3(target.position.x, target.position.y + distanceY, target.position.z);
+        transform.position = new Vector3(target.position.x, distanceY, target.position.z);
     }
 }

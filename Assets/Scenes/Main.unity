@@ -137,7 +137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &26098015
 RectTransform:
   m_ObjectHideFlags: 0
@@ -871,7 +871,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollower
   target: {fileID: 1545082071}
   player: {fileID: 1545082072}
-  distanceY: 0.125
+  distanceY: 12
 --- !u!114 &1168093042
 MonoBehaviour:
   m_ObjectHideFlags: 0

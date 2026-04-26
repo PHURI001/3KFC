@@ -24,9 +24,4 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    public void Play()
-    {
-
-    }
 }
