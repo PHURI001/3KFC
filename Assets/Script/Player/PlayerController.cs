@@ -11,8 +11,9 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
-        input = GetComponent<InputReader>();
         rb = GetComponent<Rigidbody>();
+        if(input == null)
+            input = GameManager.Instance.InputReader;
     }
 
     void FixedUpdate()
