@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee3ae68f60becc04cbc446dbe8dae224, type: 3}
   m_Name: New Multipl Shot GunData
   m_EditorClassIdentifier: Assembly-CSharp::SO_MultipleShotGun
-  <Bullet>k__BackingField: {fileID: 696893759916154941, guid: 8a9de75e01e06fd4fa046dc4499fe399, type: 3}
+  <Bullet>k__BackingField: {fileID: 2156820626790081485, guid: a136d3fb81bfb5d4da82bc6658926053, type: 3}
   <Speed>k__BackingField: 40
   <Damage>k__BackingField: 0
   <Reload>k__BackingField: 0
-  <BulletToSpawn>k__BackingField: 5
-  <DelayInterval>k__BackingField: 0.05
+  <BulletToSpawn>k__BackingField: 3
+  <DelayInterval>k__BackingField: 0.15

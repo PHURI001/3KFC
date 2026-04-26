@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+
 public abstract class Abstract_Gun : MonoBehaviour
 {
     //public event Action OnShoot;
