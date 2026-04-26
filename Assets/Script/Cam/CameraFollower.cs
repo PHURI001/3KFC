@@ -2,15 +2,25 @@ using UnityEngine;
 
 public class CameraFollower : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private Transform target;
+
+    [SerializeField] private Player player;
+
+    [Header("Camera Settings")]
+    [SerializeField] private float distanceY;
+
+    private void Awake()
     {
-        
+        if(player == null)
+            player = FindFirstObjectByType<Player>();
+        if(target == null)
+            target = player.transform;
+        if(distanceY >= 0)
+            distanceY = 10f;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void LateUpdate()
     {
-        
+        transform.position = new Vector3(target.position.x, target.position.y + distanceY, target.position.z);
     }
 }
