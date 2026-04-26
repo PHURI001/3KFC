@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[RequireComponent(typeof(InputReader))]
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
