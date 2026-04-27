@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     private Rigidbody rb;
     public Transform PlayerLocate;
     public NavMeshAgent Agent;
+    public Wave wave;
 
     //Public Property
     public virtual float Health { get => health; protected set => health = Mathf.Clamp(value, 0, 100); }
@@ -25,7 +26,9 @@ public class Enemy : MonoBehaviour
 
         Agent = GetComponent<NavMeshAgent>();
         Agent.speed = Speed;
-        Agent.stoppingDistance = (gameObject.transform.localScale.x + gameObject.transform.localScale.z) / 2;
+        Agent.stoppingDistance = ((gameObject.transform.localScale.x + gameObject.transform.localScale.z) / 2) + 15;
+
+        PlayerLocate = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     private void Update()
@@ -46,6 +49,7 @@ public class Enemy : MonoBehaviour
 
     public void Dead()
     {
+        wave.enemyCount = -1;
         Destroy(gameObject);
     }
 
