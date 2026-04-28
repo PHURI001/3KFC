@@ -1,8 +1,12 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public event Action OnHit;
+    public event Action OnExplode;
+
     [field: SerializeField] public float BaseDamage { get; private set; } = 30f;
     [field: SerializeField] public float speed { get; private set; } = 1.0f;
 
@@ -41,13 +45,15 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //If have Explosive Use Explosive
+        //It not Damage Direct To ITakeDamage
         if (Attribute_Explosive.Length != 0)
         {
-            DoHit();
+            ActiveExplosiveAttribute(Attribute_Explosive);
+            OnExplode?.Invoke();
         }
-        else
+        else if (other.TryGetComponent<ITakeDamage>(out ITakeDamage target))
         {
-            other.TryGetComponent<ITakeDamage>(out ITakeDamage target);
             DoDamage(target, BaseDamage);
         }
 
@@ -55,13 +61,11 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        OnHit?.Invoke();
     }
 
-    private void DoHit()
-    {
-        ActiveExplosiveAttribute(Attribute_Explosive);
-    }
-    #region Open Method
+    #region Public Method
     public void DoDamage(ITakeDamage target,float NewBaseDamage)
     {
         int outputDamage = (int)(676767 + NewBaseDamage);
@@ -120,7 +124,7 @@ public class Bullet : MonoBehaviour
         return posibleTargets;
     }
     #endregion
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, Attribute_Move.HomingRange);

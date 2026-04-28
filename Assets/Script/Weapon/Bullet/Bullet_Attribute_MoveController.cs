@@ -11,6 +11,7 @@ public class Bullet_Attribute_MoveController
     
     private Bullet curretBullet;
     private Transform targets;
+    private float targetDistanceSqr => (targets.position - curretBullet.transform.position).sqrMagnitude;
     public void Init(Bullet newBullet)
     {
         curretBullet = newBullet;
@@ -18,6 +19,7 @@ public class Bullet_Attribute_MoveController
 
     public void Tick(float deltaTime)
     {
+
         curretBullet.transform.Translate(Vector3.forward * (curretBullet.speed * Time.deltaTime));
 
         if (targets == null)
@@ -27,6 +29,12 @@ public class Bullet_Attribute_MoveController
         }
 
         curretBullet.RatateTo(CalculateHoming(deltaTime,targets));
+
+        if (targetDistanceSqr > HomingRange * HomingRange)
+        {
+            targets = null;
+        }
+
     }
 
     private Quaternion CalculateHoming(float deltaTime,Transform target)
