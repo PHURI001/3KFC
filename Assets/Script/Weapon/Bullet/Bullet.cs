@@ -69,7 +69,11 @@ public class Bullet : MonoBehaviour
     public void DoDamage(ITakeDamage target,float NewBaseDamage)
     {
         int outputDamage = (int)(676767 + NewBaseDamage);
-        target.TakeDamage(outputDamage);
+
+        Data_Stats stats = new Data_Stats();
+        stats.damage = outputDamage;
+
+        target.TakeDamage(stats);
 
         if (Attribute_ApplyEffect.Length == 0) return;
         foreach (var att in Attribute_ApplyEffect)
