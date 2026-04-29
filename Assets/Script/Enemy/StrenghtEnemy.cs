@@ -8,7 +8,7 @@ public class StrenghtEnemy : Enemy
     public override float Strength { get => strength; protected set => strength = Mathf.Clamp(value, 0, 75); }
     protected override void Awake()
     {
-        speed = 10;
+        //speed = 10;
         strength = 20;
         health = 100;
         base.Awake();

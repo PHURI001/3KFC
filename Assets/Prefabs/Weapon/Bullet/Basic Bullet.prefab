@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c39c66a9f2dafc40ba4d3c81c589491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
-  <BaseDamage>k__BackingField: 30
+  <BaseDamage>k__BackingField: 50
   <speed>k__BackingField: 1
   Attribute_Move:
     <HomingRange>k__BackingField: 0
