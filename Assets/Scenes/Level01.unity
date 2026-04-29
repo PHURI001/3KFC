@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 60267591}
   - component: {fileID: 60267590}
   - component: {fileID: 60267596}
+  - component: {fileID: 60267597}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -301,6 +302,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &60267597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60267589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea195258b0f2d1e49bcc89c3e59f8172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AddCoinOnDeath
+  coinReward: 5
 --- !u!1 &197909021
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,8 +324,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 197909022}
+  - component: {fileID: 197909023}
   m_Layer: 0
-  m_Name: Spawn Manager
+  m_Name: _GameState
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -332,6 +347,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &197909023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197909021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d968c9cdce1023c428536db870c53f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_GameState
+  nextLevelUnlock: 2
 --- !u!4 &286134044 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 318320819000338599, guid: c9c573335d02970428647211830fa868, type: 3}
@@ -739,6 +767,7 @@ GameObject:
   - component: {fileID: 500650146}
   - component: {fileID: 500650145}
   - component: {fileID: 500650144}
+  - component: {fileID: 500650151}
   m_Layer: 0
   m_Name: Enemy (1)
   m_TagString: Untagged
@@ -906,6 +935,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &500650151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500650143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea195258b0f2d1e49bcc89c3e59f8172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AddCoinOnDeath
+  coinReward: 5
 --- !u!1 &602674617
 GameObject:
   m_ObjectHideFlags: 0
@@ -1569,6 +1611,7 @@ GameObject:
   - component: {fileID: 1109425952}
   - component: {fileID: 1109425951}
   - component: {fileID: 1109425950}
+  - component: {fileID: 1109425957}
   m_Layer: 0
   m_Name: Enemy (2)
   m_TagString: Untagged
@@ -1736,6 +1779,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1109425957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109425949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea195258b0f2d1e49bcc89c3e59f8172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AddCoinOnDeath
+  coinReward: 5
 --- !u!1 &1416360369
 GameObject:
   m_ObjectHideFlags: 0

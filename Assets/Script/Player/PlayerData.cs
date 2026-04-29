@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerData : MonoBehaviour
 {
     private List<bool> LevelUnlock  = new List<bool>() { true };
-
+    private int coin = 0; 
     private void Awake()
     {
         if (LevelUnlock == null)
@@ -21,7 +21,7 @@ public class PlayerData : MonoBehaviour
         {
             LevelUnlock.Add(false);
         }
-        LevelUnlock[level] = true;
+        LevelUnlock[level - 1] = true;
     }
 
     public bool GetLevel(int level)
@@ -29,4 +29,12 @@ public class PlayerData : MonoBehaviour
         if (level < 0 || level > LevelUnlock.Count) { return false; }
         return LevelUnlock[level - 1];
     }
+
+    public void AddCoin(int amount)
+    {
+        coin += amount;
+    }
+
+    public int GetCoin() => coin;
+    
 }
