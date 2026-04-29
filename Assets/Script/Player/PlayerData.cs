@@ -24,5 +24,9 @@ public class PlayerData : MonoBehaviour
         LevelUnlock[level] = true;
     }
 
-    public bool GetLevel(int level) { return LevelUnlock[level]; }
+    public bool GetLevel(int level)
+    {
+        if (level < 0 || level > LevelUnlock.Count) { return false; }
+        return LevelUnlock[level - 1];
+    }
 }

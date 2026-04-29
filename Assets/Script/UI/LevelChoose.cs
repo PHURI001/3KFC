@@ -16,5 +16,9 @@ public class LevelChoose : MonoBehaviour
         {
             sceneManager.LevelLoadScene(level);
         }
+        else
+        {
+            Debug.Log("Level " + level + " is locked.");
+        }
     }
 }
