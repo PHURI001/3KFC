@@ -5,6 +5,8 @@ using System.IO;
 [RequireComponent(typeof(LookAt))]
 public class Player : MonoBehaviour
 {
+    [SerializeField] private PlayerShowStats showStats;
+
     [Header("Player Stats")]
     [SerializeField] private int maxHealth = 10;
     [SerializeField] private int _currentHealth;
@@ -29,9 +31,11 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        LoadGame();
         currentHealth = maxHealth;
 
-        LoadGame();
+        showStats = GetComponentInChildren<PlayerShowStats>();
+        ShowStats();
     }
 
     public void TakeDamage(Data_Stats dataDamage)
@@ -61,7 +65,9 @@ public class Player : MonoBehaviour
             isGameOver = true;
             Die();
         }
-        Debug.Log($"Player Health:{currentHealth}, Shield:{currentSheild}");
+        //Debug.Log($"Player Health:{currentHealth}, Shield:{currentSheild}");
+
+        ShowStats();
     }
 
     public void Die()
@@ -104,5 +110,11 @@ public class Player : MonoBehaviour
             criticalChance = data.criticalChance;
             dropChance = data.dropChance;
         }
+    }
+
+    private void ShowStats()
+    {
+        showStats.SetHealth(currentHealth);
+        showStats.SetShield(currentSheild);
     }
 }
