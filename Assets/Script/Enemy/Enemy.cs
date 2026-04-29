@@ -5,8 +5,8 @@ public class Enemy : MonoBehaviour, ITakeDamage
     //attributes
     [SerializeField] protected float health = 100;
     [SerializeField] protected float speed = 1;
-    [SerializeField] protected float strength = 10;
-
+    [SerializeField] protected float strength = 5;
+ 
     private Rigidbody rb;
     public Transform PlayerLocate;
 
@@ -25,6 +25,27 @@ public class Enemy : MonoBehaviour, ITakeDamage
     private void Update()
     {
         MoveToTarget();
+    }
+
+#warning temporary
+    //temporary
+    public Data_Stats GetDataStats()
+    {
+        Data_Stats stats = new Data_Stats();
+        stats.damage = (int)Strength;
+        return stats;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Player player = collision.gameObject.GetComponent<Player>();
+            if (player != null)
+            {
+                player.TakeDamage(GetDataStats());
+            }
+        }
     }
 
     public void MoveToTarget()
