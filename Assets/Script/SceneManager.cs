@@ -7,4 +7,9 @@ public class SceneManager : MonoBehaviour
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("InGame");
     }
+
+    public void GoToMain()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Main");
+    }
 }
