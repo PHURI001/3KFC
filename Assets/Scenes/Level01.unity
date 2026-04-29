@@ -592,6 +592,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7b19f04c04bcc34aae89ac79c6b6996, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
+  showStats: {fileID: 0}
   maxHealth: 1000
   _currentHealth: 0
   maxSheild: 5
@@ -1839,6 +1840,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5950b135bd5c1534ca9554810e36c975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerData
+  showStats: {fileID: 0}
 --- !u!114 &1416360372
 MonoBehaviour:
   m_ObjectHideFlags: 0

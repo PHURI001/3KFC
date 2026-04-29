@@ -3,15 +3,15 @@ using UnityEngine;
 
 public class PlayerData : MonoBehaviour
 {
+    [SerializeField] private PlayerShowStats showStats;
+
     private List<bool> LevelUnlock  = new List<bool>() { true };
-    private int coin = 0; 
-    private void Awake()
+    private int coin;
+
+    private void Start()
     {
-        if (LevelUnlock == null)
-        {
-            LevelUnlock = new List<bool>();
-            LevelUnlock.Add(true);
-        }
+        showStats = GameManager.Instance.showStats;
+        showStats.SetCoin(coin);
     }
 
     public void SetLevel(int level)
@@ -33,8 +33,11 @@ public class PlayerData : MonoBehaviour
     public void AddCoin(int amount)
     {
         coin += amount;
+
+        if (showStats == null) { showStats = FindFirstObjectByType<PlayerShowStats>(); }
+            
+        showStats.SetCoin(coin);
     }
 
-    public int GetCoin() => coin;
-    
+
 }

@@ -33,8 +33,9 @@ public class Player : MonoBehaviour
     {
         LoadGame();
         currentHealth = maxHealth;
+        currentSheild = maxSheild;
 
-        showStats = GetComponentInChildren<PlayerShowStats>();
+        showStats = GameManager.Instance.showStats;
         ShowStats();
     }
 
