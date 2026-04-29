@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SO_MultipleShotGun
   <Bullet>k__BackingField: {fileID: 5531160445526992571, guid: 63a3d3e77b1c8de45931070dbfa21057, type: 3}
   <Speed>k__BackingField: 20
-  <Damage>k__BackingField: 0
+  <Damage>k__BackingField: 10
   <Reload>k__BackingField: 0
   <BulletToSpawn>k__BackingField: 3
   <DelayInterval>k__BackingField: 0.1

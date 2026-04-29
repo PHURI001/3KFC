@@ -60,6 +60,7 @@ public class Bullet : MonoBehaviour
         {
             ActiveExplosiveAttribute(Attribute_Explosive);
             OnExplode?.Invoke();
+            Debug.Log(other.name);
         }
         else if (other.TryGetComponent<ITakeDamage>(out ITakeDamage target))
         {

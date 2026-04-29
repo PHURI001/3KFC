@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2599690395308835543}
   - component: {fileID: 7269879927459878573}
   - component: {fileID: 5581621017407791879}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SuperBomp Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ MonoBehaviour:
     HomingStrength: 100
   Attribute_Explosive:
   - <ExplosiveRange>k__BackingField: 5
-    DamageMultiply: 0
+    DamageMultiply: 1
   Attribute_ApplyEffect: []
   IsPierce: 0
 --- !u!54 &7269879927459878573
