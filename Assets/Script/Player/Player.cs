@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.IO;
 
+[RequireComponent(typeof(PlayerController))]
+[RequireComponent(typeof(LookAt))]
 public class Player : MonoBehaviour
 {
     [Header("Player Stats")]

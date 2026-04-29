@@ -1030,7 +1030,6 @@ GameObject:
   - component: {fileID: 1425743585}
   - component: {fileID: 1425743584}
   - component: {fileID: 1425743583}
-  - component: {fileID: 1425743587}
   - component: {fileID: 1425743588}
   m_Layer: 0
   m_Name: ShopArea
@@ -1133,19 +1132,6 @@ Transform:
   - {fileID: 2018335083}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1425743587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1425743582}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbdefc67e049ea14ba54f140b989f3a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShopArea
-  ui: {fileID: 2018335079}
 --- !u!114 &1425743588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1174,6 +1160,7 @@ GameObject:
   - component: {fileID: 1545082067}
   - component: {fileID: 1545082065}
   - component: {fileID: 1545082072}
+  - component: {fileID: 1545082073}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1336,6 +1323,18 @@ MonoBehaviour:
   criticalChance: 1
   dropChance: 1
   isGameOver: 0
+--- !u!114 &1545082073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545082064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 153882b08039cb74eb8c3a9a1b32ed8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LookAt
 --- !u!1 &1560777015
 GameObject:
   m_ObjectHideFlags: 0
@@ -1683,7 +1682,6 @@ GameObject:
   - component: {fileID: 1788203676}
   - component: {fileID: 1788203675}
   - component: {fileID: 1788203674}
-  - component: {fileID: 1788203678}
   - component: {fileID: 1788203679}
   m_Layer: 0
   m_Name: PlayArea
@@ -1786,19 +1784,6 @@ Transform:
   - {fileID: 26098015}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1788203678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1788203673}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3da2c040d42a06242819c9959f65067c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayArea
-  ui: {fileID: 26098014}
 --- !u!114 &1788203679
 MonoBehaviour:
   m_ObjectHideFlags: 0
