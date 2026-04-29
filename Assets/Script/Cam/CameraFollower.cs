@@ -15,7 +15,7 @@ public class CameraFollower : MonoBehaviour
             player = FindFirstObjectByType<Player>();
         if(target == null)
             target = player.transform;
-        if(distanceY >= 0)
+        if(distanceY <= 0)
             distanceY = 10f;
     }
 
