@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, ITakeDamage
 {
     //attributes
     [SerializeField] protected float health = 100;
@@ -24,14 +24,7 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        if (health <= 0)
-        {
-            Dead();
-        }
-        else
-        {
-            MoveToTarget();
-        }
+        MoveToTarget();
     }
 
     public void MoveToTarget()
@@ -49,4 +42,15 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public void TakeDamage(Data_Stats dataDamage)
+    {
+        if (health - dataDamage.damage <= 0)
+        {
+            Dead();
+        }
+        else
+        {
+            Health -= dataDamage.damage;
+        }
+    }
 }
