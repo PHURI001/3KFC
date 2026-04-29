@@ -64,7 +64,8 @@ public class Player : MonoBehaviour
 
     public void Die()
     {
-#warning("Implement player death logic here.")
+        // We can add later
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Main");
         Debug.Log("Player has died.");
     }
 
