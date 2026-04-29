@@ -5,7 +5,7 @@ public class LookAt : MonoBehaviour
 {
     Player player;
 
-    private void Awake()
+    private void Start()
     {
         player = GetComponent<Player>();
     }

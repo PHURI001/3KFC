@@ -138,7 +138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &26098015
 RectTransform:
   m_ObjectHideFlags: 0
@@ -806,7 +806,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56411df97cc8cbe458166a4c64bacb73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneManager
-  LevelSceneName: []
+  LevelSceneName:
+  - 
+  - 
 --- !u!114 &970902307
 MonoBehaviour:
   m_ObjectHideFlags: 0
