@@ -12,7 +12,11 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        if(input == null)
+    }
+
+    private void Start()
+    {
+        if (input == null)
             input = GameManager.Instance.InputReader;
     }
 
