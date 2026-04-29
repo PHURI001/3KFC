@@ -2,15 +2,18 @@ using UnityEngine;
 
 public class Bullet_VFX : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private Bullet bullet;
+    [SerializeField] private GameObject VFX;
+    private void OnEnable()
     {
-        
+        bullet.OnExplode += SpawnExplodeVFX;
     }
-
-    // Update is called once per frame
-    void Update()
+    private void OnDisable()
     {
-        
+        bullet.OnExplode -= SpawnExplodeVFX;
+    }
+    private void SpawnExplodeVFX()
+    {
+        Instantiate(VFX, transform.position, Quaternion.identity);
     }
 }

@@ -9,7 +9,6 @@ public class Bullet_Attribute_Explosive
     [Header("Stat")]
     [field: SerializeField] public float ExplosiveRange { get; private set; } = 150f;
     [SerializeField] private float DamageMultiply = 100f;
-    [SerializeField] private GameObject VFX;
 
     public void Init(Bullet newBullet)
     {

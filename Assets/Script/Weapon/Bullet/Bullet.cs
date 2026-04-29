@@ -20,6 +20,7 @@ public class Bullet : MonoBehaviour
     private void Awake()
     {
         Init(speed);
+        if (ignoreTargets == null) ignoreTargets = new List<ITakeDamage>();
     }
 
     public void Init(float _speed, List<ITakeDamage> _ignoreTarget)
@@ -142,6 +143,7 @@ public class Bullet : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, Attribute_Move.HomingRange);
 
+        if (Attribute_Explosive == null) return;
         foreach (var att in Attribute_Explosive)
         {
             Gizmos.color = Color.red;
