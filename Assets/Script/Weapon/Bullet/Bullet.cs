@@ -16,10 +16,18 @@ public class Bullet : MonoBehaviour
     [SerializeField] private Bullet_Attribute_ApplyEffect[] Attribute_ApplyEffect;
     [SerializeField] bool IsPierce = false;
 
+    private List<ITakeDamage> ignoreTargets;
     private void Awake()
     {
         Init(speed);
     }
+
+    public void Init(float _speed, List<ITakeDamage> _ignoreTarget)
+    {
+        ignoreTargets = _ignoreTarget;
+        Init(_speed);
+    }
+
     public void Init(float _speed)
     {
         speed = _speed;
@@ -27,7 +35,7 @@ public class Bullet : MonoBehaviour
         if (Attribute_Move == null) Attribute_Move = new Bullet_Attribute_MoveController();
         Attribute_Move.Init(this);
 
-        foreach(var att in Attribute_Explosive)
+        foreach (var att in Attribute_Explosive)
         {
             att.Init(this);
         }
@@ -68,11 +76,10 @@ public class Bullet : MonoBehaviour
     #region Public Method
     public void DoDamage(ITakeDamage target,float NewBaseDamage)
     {
-        int outputDamage = (int)(676767 + NewBaseDamage);
+        if (ignoreTargets.Contains(target)) return;
 
         Data_Stats stats = new Data_Stats();
-        stats.damage = outputDamage;
-
+        stats.damage = (int)(NewBaseDamage);
         target.TakeDamage(stats);
 
         if (Attribute_ApplyEffect.Length == 0) return;
@@ -104,6 +111,7 @@ public class Bullet : MonoBehaviour
             if (col == null) continue;
             if (col.TryGetComponent<ITakeDamage>(out ITakeDamage comp))
             {
+                if (ignoreTargets.Contains(comp)) continue;
                 posibleTargets.Add(comp);
             }
         }
@@ -120,6 +128,7 @@ public class Bullet : MonoBehaviour
             if (col == null) continue;
             if (col.TryGetComponent<ITakeDamage>(out ITakeDamage comp))
             {
+                if (ignoreTargets.Contains(comp)) continue;
                 //Find Target That Have ITakeDamage
                 posibleTargets.Add(col.transform);
             }

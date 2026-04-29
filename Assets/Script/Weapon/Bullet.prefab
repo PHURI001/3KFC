@@ -129,7 +129,7 @@ MonoBehaviour:
   <BaseDamage>k__BackingField: 30
   <speed>k__BackingField: 8
   Attribute_Move:
-    <HomingRange>k__BackingField: 7
+    <HomingRange>k__BackingField: 20
     HomingStrength: 100
   Attribute_Explosive:
   - <ExplosiveRange>k__BackingField: 1.99
