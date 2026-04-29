@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7438629858300112411}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.72273004, y: -0.19999993, z: 0.71000004}
   m_LocalScale: {x: 0.18339, y: 0.24326, z: 1}
   m_ConstrainProportionsScale: 0
@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gun_SingleShot
   shootPoint: {fileID: 5125132435728440335}
-  data: {fileID: 11400000, guid: 7806b8d76b2e1094094081cf1ff31be4, type: 2}
+  data: {fileID: 11400000, guid: a42814c0277eef740bceb546e865a2dd, type: 2}
 --- !u!1 &8238981879881167591
 GameObject:
   m_ObjectHideFlags: 0
