@@ -807,8 +807,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneManager
   LevelSceneName:
-  - 
-  - 
+  - Level01
+  - Level02
 --- !u!114 &970902307
 MonoBehaviour:
   m_ObjectHideFlags: 0
