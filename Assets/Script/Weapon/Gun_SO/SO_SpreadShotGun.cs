@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "GunData/Spread Shot GunData", fileName = "New Single Shot GunData")]
+[CreateAssetMenu(menuName = "GunData/Spread Shot GunData", fileName = "New Spread Shot GunData")]
 public class SO_SpreadShotGun : Abstrac_SO_BasicGun
 {
     [field: SerializeField][Min(1)] public int BulletToSpawn { get; protected set; } = 1;

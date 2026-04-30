@@ -1,8 +1,12 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public event Action OnHit;
+    public event Action OnExplode;
+
     [field: SerializeField] public float BaseDamage { get; private set; } = 30f;
     [field: SerializeField] public float speed { get; private set; } = 1.0f;
 
@@ -12,10 +16,19 @@ public class Bullet : MonoBehaviour
     [SerializeField] private Bullet_Attribute_ApplyEffect[] Attribute_ApplyEffect;
     [SerializeField] bool IsPierce = false;
 
+    private List<ITakeDamage> ignoreTargets;
     private void Awake()
     {
         Init(speed);
+        if (ignoreTargets == null) ignoreTargets = new List<ITakeDamage>();
     }
+
+    public void Init(float _speed, List<ITakeDamage> _ignoreTarget)
+    {
+        ignoreTargets = _ignoreTarget;
+        Init(_speed);
+    }
+
     public void Init(float _speed)
     {
         speed = _speed;
@@ -23,7 +36,7 @@ public class Bullet : MonoBehaviour
         if (Attribute_Move == null) Attribute_Move = new Bullet_Attribute_MoveController();
         Attribute_Move.Init(this);
 
-        foreach(var att in Attribute_Explosive)
+        foreach (var att in Attribute_Explosive)
         {
             att.Init(this);
         }
@@ -41,13 +54,16 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //If have Explosive Use Explosive
+        //It not Damage Direct To ITakeDamage
         if (Attribute_Explosive.Length != 0)
         {
-            DoHit();
+            ActiveExplosiveAttribute(Attribute_Explosive);
+            OnExplode?.Invoke();
+            Debug.Log(other.name);
         }
-        else
+        else if (other.TryGetComponent<ITakeDamage>(out ITakeDamage target))
         {
-            other.TryGetComponent<ITakeDamage>(out ITakeDamage target);
             DoDamage(target, BaseDamage);
         }
 
@@ -55,20 +71,17 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        OnHit?.Invoke();
     }
 
-    private void DoHit()
-    {
-        ActiveExplosiveAttribute(Attribute_Explosive);
-    }
-    #region Open Method
+    #region Public Method
     public void DoDamage(ITakeDamage target,float NewBaseDamage)
     {
-        int outputDamage = (int)(676767 + NewBaseDamage);
+        if (ignoreTargets.Contains(target)) return;
 
         Data_Stats stats = new Data_Stats();
-        stats.damage = outputDamage;
-
+        stats.damage = (int)(NewBaseDamage);
         target.TakeDamage(stats);
 
         if (Attribute_ApplyEffect.Length == 0) return;
@@ -100,6 +113,7 @@ public class Bullet : MonoBehaviour
             if (col == null) continue;
             if (col.TryGetComponent<ITakeDamage>(out ITakeDamage comp))
             {
+                if (ignoreTargets.Contains(comp)) continue;
                 posibleTargets.Add(comp);
             }
         }
@@ -116,6 +130,7 @@ public class Bullet : MonoBehaviour
             if (col == null) continue;
             if (col.TryGetComponent<ITakeDamage>(out ITakeDamage comp))
             {
+                if (ignoreTargets.Contains(comp)) continue;
                 //Find Target That Have ITakeDamage
                 posibleTargets.Add(col.transform);
             }
@@ -124,11 +139,12 @@ public class Bullet : MonoBehaviour
         return posibleTargets;
     }
     #endregion
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, Attribute_Move.HomingRange);
 
+        if (Attribute_Explosive == null) return;
         foreach (var att in Attribute_Explosive)
         {
             Gizmos.color = Color.red;

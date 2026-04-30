@@ -2,12 +2,15 @@ using UnityEngine;
 
 [RequireComponent(typeof(InputReader))]
 [RequireComponent(typeof(SceneManager))]
+[RequireComponent(typeof(PlayerData))]
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
     public InputReader InputReader;
     public SceneManager SceneManager;
+    public PlayerData PlayerData;
+    public PlayerShowStats showStats;
 
     private void Awake()
     {
@@ -18,6 +21,8 @@ public class GameManager : MonoBehaviour
 
             InputReader = GetComponent<InputReader>();
             SceneManager = GetComponent<SceneManager>();
+            PlayerData = GetComponent<PlayerData>();
+            showStats = GetComponentInChildren<PlayerShowStats>();
         }
         else
         {

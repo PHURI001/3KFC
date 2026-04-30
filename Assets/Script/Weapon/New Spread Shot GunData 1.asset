@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 933bed837199f464a8fcb80440f0dde1, type: 3}
+  m_Name: New Spread Shot GunData 1
+  m_EditorClassIdentifier: Assembly-CSharp::SO_SpreadShotGun
+  <Bullet>k__BackingField: {fileID: 2156820626790081485, guid: a136d3fb81bfb5d4da82bc6658926053, type: 3}
+  <Speed>k__BackingField: 15
+  <Damage>k__BackingField: 0
+  <Reload>k__BackingField: 0
+  <BulletToSpawn>k__BackingField: 5
+  <Angle>k__BackingField: 90

@@ -3,8 +3,16 @@ using UnityEngine.SceneManagement;
 
 public class SceneManager : MonoBehaviour
 {
-    public void Play()
+    [SerializeField] private string[] LevelSceneName;
+
+    public void GoToMain()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("InGame");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Main");
+    }
+
+    public void LevelLoadScene(int level)
+    {
+        if (level < 0 || level > LevelSceneName.Length) { return; }
+        UnityEngine.SceneManagement.SceneManager.LoadScene(LevelSceneName[level - 1]);
     }
 }

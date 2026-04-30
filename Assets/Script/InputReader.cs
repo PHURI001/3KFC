@@ -23,5 +23,4 @@ public class InputReader : MonoBehaviour
         AttackInput = AttackAction.triggered;
         //Debug.Log($"Attack Input: {AttackInput}");
     }
-
 }

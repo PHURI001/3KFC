@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: New Single Shot GunData
   m_EditorClassIdentifier: Assembly-CSharp::SO_SingelShotGun
   <Bullet>k__BackingField: {fileID: 2156820626790081485, guid: a136d3fb81bfb5d4da82bc6658926053, type: 3}
-  <Speed>k__BackingField: 1
+  <Speed>k__BackingField: 15
   <Damage>k__BackingField: 0
   <Reload>k__BackingField: 0

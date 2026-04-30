@@ -1,13 +1,13 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, ITakeDamage
 {
     //attributes
     [SerializeField] protected float health = 100;
     [SerializeField] protected float speed = 1;
-    [SerializeField] protected float strength = 10;
-
+    [SerializeField] protected float strength = 5;
+ 
     private Rigidbody rb;
     public Transform PlayerLocate;
     public NavMeshAgent Agent;
@@ -33,13 +33,27 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        if (health <= 0)
+        MoveToTarget();
+    }
+
+#warning temporary
+    //temporary
+    public Data_Stats GetDataStats()
+    {
+        Data_Stats stats = new Data_Stats();
+        stats.damage = (int)Strength;
+        return stats;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
         {
-            Dead();
-        }
-        else
-        {
-            MoveToTarget();
+            Player player = collision.gameObject.GetComponent<Player>();
+            if (player != null)
+            {
+                player.TakeDamage(GetDataStats());
+            }
         }
     }
     public void MoveToTarget()
@@ -53,4 +67,15 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public void TakeDamage(Data_Stats dataDamage)
+    {
+        if (health - dataDamage.damage <= 0)
+        {
+            Dead();
+        }
+        else
+        {
+            Health -= dataDamage.damage;
+        }
+    }
 }

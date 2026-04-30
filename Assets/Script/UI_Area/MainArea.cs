@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class Area : MonoBehaviour
+public class MainArea : MonoBehaviour
 {
     [SerializeField] protected GameObject ui;
 

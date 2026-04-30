@@ -1,8 +1,12 @@
 using UnityEngine;
 using System.IO;
 
+[RequireComponent(typeof(PlayerController))]
+[RequireComponent(typeof(LookAt))]
 public class Player : MonoBehaviour
 {
+    [SerializeField] private PlayerShowStats showStats;
+
     [Header("Player Stats")]
     [SerializeField] private int maxHealth = 10;
     [SerializeField] private int _currentHealth;
@@ -27,9 +31,12 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        currentHealth = maxHealth;
-
         LoadGame();
+        currentHealth = maxHealth;
+        currentSheild = maxSheild;
+
+        showStats = GameManager.Instance.showStats;
+        ShowStats();
     }
 
     public void TakeDamage(Data_Stats dataDamage)
@@ -59,12 +66,15 @@ public class Player : MonoBehaviour
             isGameOver = true;
             Die();
         }
-        Debug.Log($"Player Health:{currentHealth}, Shield:{currentSheild}");
+        //Debug.Log($"Player Health:{currentHealth}, Shield:{currentSheild}");
+
+        ShowStats();
     }
 
     public void Die()
     {
-#warning("Implement player death logic here.")
+        // We can add later
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Main");
         Debug.Log("Player has died.");
     }
 
@@ -101,5 +111,11 @@ public class Player : MonoBehaviour
             criticalChance = data.criticalChance;
             dropChance = data.dropChance;
         }
+    }
+
+    private void ShowStats()
+    {
+        showStats.SetHealth(currentHealth);
+        showStats.SetShield(currentSheild);
     }
 }
