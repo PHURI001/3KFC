@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StrenghtEnemy
   health: 100
-  speed: 0.2
+  speed: 1
   strength: 10
   PlayerLocate: {fileID: 351785259}
 --- !u!195 &34916083
@@ -351,7 +351,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StrenghtEnemy
   health: 100
-  speed: 0.2
+  speed: 1
   strength: 10
   PlayerLocate: {fileID: 351785259}
 --- !u!195 &60267591
@@ -574,7 +574,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StrenghtEnemy
   health: 100
-  speed: 0.2
+  speed: 1
   strength: 10
   PlayerLocate: {fileID: 351785259}
 --- !u!195 &89674282
@@ -770,7 +770,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StrenghtEnemy
   health: 100
-  speed: 0.2
+  speed: 1
   strength: 10
   PlayerLocate: {fileID: 351785259}
 --- !u!195 &95873646
@@ -966,7 +966,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StrenghtEnemy
   health: 100
-  speed: 0.2
+  speed: 1
   strength: 10
   PlayerLocate: {fileID: 351785259}
 --- !u!195 &127575052
@@ -1162,7 +1162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StrenghtEnemy
   health: 100
-  speed: 0.2
+  speed: 1
   strength: 10
   PlayerLocate: {fileID: 351785259}
 --- !u!195 &158197371
@@ -1358,7 +1358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StrenghtEnemy
   health: 100
-  speed: 0.2
+  speed: 1
   strength: 10
   PlayerLocate: {fileID: 351785259}
 --- !u!195 &178503917
@@ -1554,7 +1554,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StrenghtEnemy
   health: 100
-  speed: 0.2
+  speed: 1
   strength: 10
   PlayerLocate: {fileID: 351785259}
 --- !u!195 &179340882
@@ -1781,7 +1781,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StrenghtEnemy
   health: 100
-  speed: 0.2
+  speed: 1
   strength: 10
   PlayerLocate: {fileID: 351785259}
 --- !u!195 &198459375
@@ -1977,7 +1977,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StrenghtEnemy
   health: 100
-  speed: 0.2
+  speed: 1
   strength: 10
   PlayerLocate: {fileID: 351785259}
 --- !u!195 &252297578
@@ -2173,7 +2173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StrenghtEnemy
   health: 100
-  speed: 0.2
+  speed: 1
   strength: 10
   PlayerLocate: {fileID: 351785259}
 --- !u!195 &280349026
@@ -2369,7 +2369,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StrenghtEnemy
   health: 100
-  speed: 0.2
+  speed: 1
   strength: 10
   PlayerLocate: {fileID: 351785259}
 --- !u!195 &304943832
@@ -2773,7 +2773,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StrenghtEnemy
   health: 100
-  speed: 0.2
+  speed: 1
   strength: 10
   PlayerLocate: {fileID: 351785259}
 --- !u!195 &449726234
@@ -2969,7 +2969,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StrenghtEnemy
   health: 100
-  speed: 0.2
+  speed: 1
   strength: 10
   PlayerLocate: {fileID: 351785259}
 --- !u!195 &454112340
@@ -3277,7 +3277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StrenghtEnemy
   health: 100
-  speed: 0.2
+  speed: 1
   strength: 10
   PlayerLocate: {fileID: 351785259}
 --- !u!195 &543675441
@@ -3526,7 +3526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StrenghtEnemy
   health: 100
-  speed: 0.2
+  speed: 1
   strength: 10
   PlayerLocate: {fileID: 351785259}
 --- !u!195 &621755761
@@ -3722,7 +3722,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StrenghtEnemy
   health: 100
-  speed: 0.2
+  speed: 1
   strength: 10
   PlayerLocate: {fileID: 351785259}
 --- !u!195 &658216550
@@ -3918,7 +3918,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StrenghtEnemy
   health: 100
-  speed: 0.2
+  speed: 1
   strength: 10
   PlayerLocate: {fileID: 351785259}
 --- !u!195 &664080871
@@ -4114,7 +4114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StrenghtEnemy
   health: 100
-  speed: 0.2
+  speed: 1
   strength: 10
   PlayerLocate: {fileID: 351785259}
 --- !u!195 &770602936
@@ -4310,7 +4310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StrenghtEnemy
   health: 100
-  speed: 0.2
+  speed: 1
   strength: 10
   PlayerLocate: {fileID: 351785259}
 --- !u!195 &867569797
@@ -4899,7 +4899,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StrenghtEnemy
   health: 100
-  speed: 0.2
+  speed: 1
   strength: 10
   PlayerLocate: {fileID: 351785259}
 --- !u!195 &1077284958
@@ -5241,7 +5241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StrenghtEnemy
   health: 100
-  speed: 0.2
+  speed: 1
   strength: 10
   PlayerLocate: {fileID: 351785259}
 --- !u!195 &1167748369
@@ -5437,7 +5437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StrenghtEnemy
   health: 100
-  speed: 0.2
+  speed: 1
   strength: 10
   PlayerLocate: {fileID: 351785259}
 --- !u!195 &1243073843
@@ -5621,6 +5621,7 @@ MonoBehaviour:
   InputReader: {fileID: 0}
   SceneManager: {fileID: 0}
   PlayerData: {fileID: 0}
+  showStats: {fileID: 0}
 --- !u!114 &1416360371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5737,7 +5738,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StrenghtEnemy
   health: 100
-  speed: 0.2
+  speed: 1
   strength: 10
   PlayerLocate: {fileID: 351785259}
 --- !u!195 &1471114290
@@ -5933,7 +5934,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StrenghtEnemy
   health: 100
-  speed: 0.2
+  speed: 1
   strength: 10
   PlayerLocate: {fileID: 351785259}
 --- !u!195 &1482211839
@@ -6256,7 +6257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StrenghtEnemy
   health: 100
-  speed: 0.2
+  speed: 1
   strength: 10
   PlayerLocate: {fileID: 351785259}
 --- !u!195 &1725002097
@@ -6452,7 +6453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StrenghtEnemy
   health: 100
-  speed: 0.2
+  speed: 1
   strength: 10
   PlayerLocate: {fileID: 351785259}
 --- !u!195 &1781396006
@@ -6648,7 +6649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StrenghtEnemy
   health: 100
-  speed: 0.2
+  speed: 1
   strength: 10
   PlayerLocate: {fileID: 351785259}
 --- !u!195 &1834614715
@@ -6844,7 +6845,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StrenghtEnemy
   health: 100
-  speed: 0.2
+  speed: 1
   strength: 10
   PlayerLocate: {fileID: 351785259}
 --- !u!195 &1839784760
@@ -7040,7 +7041,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StrenghtEnemy
   health: 100
-  speed: 0.2
+  speed: 1
   strength: 10
   PlayerLocate: {fileID: 351785259}
 --- !u!195 &1872434257
@@ -7236,7 +7237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StrenghtEnemy
   health: 100
-  speed: 0.2
+  speed: 1
   strength: 10
   PlayerLocate: {fileID: 351785259}
 --- !u!195 &1918978513
@@ -7432,7 +7433,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StrenghtEnemy
   health: 100
-  speed: 0.2
+  speed: 1
   strength: 10
   PlayerLocate: {fileID: 351785259}
 --- !u!195 &1965680912
@@ -7740,7 +7741,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StrenghtEnemy
   health: 100
-  speed: 0.2
+  speed: 1
   strength: 10
   PlayerLocate: {fileID: 351785259}
 --- !u!195 &2016643146
@@ -7936,7 +7937,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StrenghtEnemy
   health: 100
-  speed: 0.2
+  speed: 1
   strength: 10
   PlayerLocate: {fileID: 351785259}
 --- !u!195 &2063771048
@@ -8132,7 +8133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StrenghtEnemy
   health: 100
-  speed: 0.2
+  speed: 1
   strength: 10
   PlayerLocate: {fileID: 351785259}
 --- !u!195 &2094982550
@@ -8526,7 +8527,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StrenghtEnemy
   health: 100
-  speed: 0.2
+  speed: 1
   strength: 10
   PlayerLocate: {fileID: 351785259}
 --- !u!195 &2144182800
