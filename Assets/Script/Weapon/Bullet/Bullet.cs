@@ -83,6 +83,7 @@ public class Bullet : MonoBehaviour
         Data_Stats stats = new Data_Stats();
         stats.damage = (int)(NewBaseDamage);
         target.TakeDamage(stats);
+        OnHit?.Invoke();
 
         if (Attribute_ApplyEffect.Length == 0) return;
         foreach (var att in Attribute_ApplyEffect)

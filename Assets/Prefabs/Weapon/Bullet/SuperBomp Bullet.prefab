@@ -177,4 +177,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bullet_VFX
   bullet: {fileID: 2599690395308835543}
-  VFX: {fileID: 466426280667128359, guid: f99350f5799c4d34784d09170c17dc24, type: 3}
+  VFXExplode: {fileID: 8022989274355317738, guid: 618f654db2c7ddc489e14811ebff0ecd, type: 3}
+  VFXHit: {fileID: 718445499527803042, guid: 40bdb7ce601449248940ce6aaba2e622, type: 3}
