@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 7169562148291527788}
   - component: {fileID: 8455987646943371967}
   - component: {fileID: 8626235656434699815}
+  - component: {fileID: 8121412031417749792}
   m_Layer: 0
   m_Name: Nano Machine Gun
   m_TagString: Untagged
@@ -156,6 +157,7 @@ Transform:
   - {fileID: 1185719041383689386}
   - {fileID: 3619282787865595476}
   - {fileID: 1951203326860190320}
+  - {fileID: 5669129258641230557}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7169562148291527788
@@ -227,8 +229,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d0c974eb1ad1b94a9424c5846f78c87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gun_MultipleShot
-  shootPoint: {fileID: 1185719041383689386}
+  <shootPoint>k__BackingField: {fileID: 1185719041383689386}
   data: {fileID: 11400000, guid: 42e68074f072417498d5a329bc13a2f9, type: 2}
+--- !u!114 &8121412031417749792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4206093063071622860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47490129fc05a994da8e7580bf93032b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Gun_VFX
+  mainGun: {fileID: 8626235656434699815}
+  VFXShoot: {fileID: 4785626514130592292, guid: 150f93aa744571642ae94d12d04ca437, type: 3}
+  VFXBulletShells: {fileID: 1895820075202810309}
 --- !u!1 &6832071137901672077
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,3 +336,70 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1001 &2653225585394619799
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 9122007935893419110}
+    m_Modifications:
+    - target: {fileID: 826580318097660527, guid: 1ee379e9ca1c4fe44aa169974a3bb96e, type: 3}
+      propertyPath: m_Name
+      value: VFX_Bullet Shell Particle
+      objectReference: {fileID: 0}
+    - target: {fileID: 7673832064817897290, guid: 1ee379e9ca1c4fe44aa169974a3bb96e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7673832064817897290, guid: 1ee379e9ca1c4fe44aa169974a3bb96e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7673832064817897290, guid: 1ee379e9ca1c4fe44aa169974a3bb96e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7673832064817897290, guid: 1ee379e9ca1c4fe44aa169974a3bb96e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.6701974
+      objectReference: {fileID: 0}
+    - target: {fileID: 7673832064817897290, guid: 1ee379e9ca1c4fe44aa169974a3bb96e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.6701974
+      objectReference: {fileID: 0}
+    - target: {fileID: 7673832064817897290, guid: 1ee379e9ca1c4fe44aa169974a3bb96e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.22546706
+      objectReference: {fileID: 0}
+    - target: {fileID: 7673832064817897290, guid: 1ee379e9ca1c4fe44aa169974a3bb96e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.22546712
+      objectReference: {fileID: 0}
+    - target: {fileID: 7673832064817897290, guid: 1ee379e9ca1c4fe44aa169974a3bb96e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -52.812
+      objectReference: {fileID: 0}
+    - target: {fileID: 7673832064817897290, guid: 1ee379e9ca1c4fe44aa169974a3bb96e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7673832064817897290, guid: 1ee379e9ca1c4fe44aa169974a3bb96e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1ee379e9ca1c4fe44aa169974a3bb96e, type: 3}
+--- !u!198 &1895820075202810309 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4511877629542401106, guid: 1ee379e9ca1c4fe44aa169974a3bb96e, type: 3}
+  m_PrefabInstance: {fileID: 2653225585394619799}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5669129258641230557 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7673832064817897290, guid: 1ee379e9ca1c4fe44aa169974a3bb96e, type: 3}
+  m_PrefabInstance: {fileID: 2653225585394619799}
+  m_PrefabAsset: {fileID: 0}

@@ -644,6 +644,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1568684729}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &277074844 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2530288978898326194, guid: 95283c9d583ee5e4094e55d1fa4b847a, type: 3}
+  m_PrefabInstance: {fileID: 1132048226989054425}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &299292486
 GameObject:
   m_ObjectHideFlags: 0
@@ -1261,6 +1266,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &569977232 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 663975414684391636, guid: 95283c9d583ee5e4094e55d1fa4b847a, type: 3}
+  m_PrefabInstance: {fileID: 1132048226989054425}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &569977234 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4962802842908504127, guid: 95283c9d583ee5e4094e55d1fa4b847a, type: 3}
+  m_PrefabInstance: {fileID: 1132048226989054425}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569977232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d0c974eb1ad1b94a9424c5846f78c87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Gun_MultipleShot
+--- !u!114 &569977237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569977232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47490129fc05a994da8e7580bf93032b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Gun_VFX
+  mainGun: {fileID: 569977234}
+  VFXShoot: {fileID: 4785626514130592292, guid: 150f93aa744571642ae94d12d04ca437, type: 3}
 --- !u!1 &656218966
 GameObject:
   m_ObjectHideFlags: 0
@@ -6250,6 +6285,10 @@ PrefabInstance:
       propertyPath: <shootPoint>k__BackingField
       value: 
       objectReference: {fileID: 1247965546}
+    - target: {fileID: 4962802842908504127, guid: 95283c9d583ee5e4094e55d1fa4b847a, type: 3}
+      propertyPath: <shootPoint>k__BackingField
+      value: 
+      objectReference: {fileID: 277074844}
     - target: {fileID: 6549295335850448258, guid: 95283c9d583ee5e4094e55d1fa4b847a, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -6265,7 +6304,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 663975414684391636, guid: 95283c9d583ee5e4094e55d1fa4b847a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 569977237}
   m_SourcePrefab: {fileID: 100100000, guid: 95283c9d583ee5e4094e55d1fa4b847a, type: 3}
 --- !u!114 &1132048226989054426 stripped
 MonoBehaviour:

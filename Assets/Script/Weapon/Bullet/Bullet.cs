@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public event Action OnHit;
+    public event Action OnDoDamage;
     public event Action OnExplode;
 
     [field: SerializeField] public float BaseDamage { get; private set; } = 30f;
@@ -67,12 +68,13 @@ public class Bullet : MonoBehaviour
             DoDamage(target, BaseDamage);
         }
 
+        OnHit?.Invoke();
+
         if (IsPierce == false)
         {
             Destroy(gameObject);
         }
 
-        OnHit?.Invoke();
     }
 
     #region Public Method
@@ -83,7 +85,7 @@ public class Bullet : MonoBehaviour
         Data_Stats stats = new Data_Stats();
         stats.damage = (int)(NewBaseDamage);
         target.TakeDamage(stats);
-        OnHit?.Invoke();
+        OnDoDamage?.Invoke();
 
         if (Attribute_ApplyEffect.Length == 0) return;
         foreach (var att in Attribute_ApplyEffect)
