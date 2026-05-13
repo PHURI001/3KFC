@@ -55,6 +55,13 @@ public class PlayerData : MonoBehaviour
         return LevelUnlock[level - 1];
     }
 
+    //temporary
+    public bool CheckLevel(int level)
+    {
+        if (LevelUnlock.Count <= level) { return false; }
+        return LevelUnlock[level];
+    }
+
     public void AddCoin(int amount)
     {
         coin += amount;

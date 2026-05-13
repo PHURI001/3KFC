@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.IO;
+using System.Collections;
 
 [RequireComponent(typeof(PlayerController))]
 [RequireComponent(typeof(LookAt))]
@@ -28,6 +29,9 @@ public class Player : MonoBehaviour
     [SerializeField] private float dropChance = 1f;
 
     [SerializeField] private bool isGameOver = false;
+
+    private float shieldRegenDelay = 5f;
+    private Coroutine shieldRegenCoroutine;
 
     private void Start()
     {
@@ -67,6 +71,13 @@ public class Player : MonoBehaviour
             Die();
         }
         //Debug.Log($"Player Health:{currentHealth}, Shield:{currentSheild}");
+
+
+        if (shieldRegenCoroutine != null)
+        {
+            StopCoroutine(shieldRegenCoroutine);
+        }
+        shieldRegenCoroutine = StartCoroutine(ShieldRegen());
 
         ShowStats();
     }
@@ -117,5 +128,18 @@ public class Player : MonoBehaviour
     {
         showStats.SetHealth(currentHealth);
         showStats.SetShield(currentSheild);
+    }
+
+    IEnumerator ShieldRegen()
+    {
+        yield return new WaitForSeconds(shieldRegenDelay);
+
+        while (currentSheild < maxSheild)
+        {
+            yield return new WaitForSeconds(1f);
+            currentSheild += 1;
+            ShowStats();
+        }
+        shieldRegenCoroutine = null;
     }
 }
