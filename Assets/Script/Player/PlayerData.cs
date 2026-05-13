@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro.EditorUtilities;
 using UnityEngine;
 
 [System.Serializable]
@@ -6,6 +7,7 @@ public class PlayerData : MonoBehaviour
 {
 
     private PlayerShowStats showStats;
+    private UI_Upgrade uiUpgrade;
 
     //Data
     [SerializeField] private int coin;
@@ -33,10 +35,15 @@ public class PlayerData : MonoBehaviour
 
     private void Start()
     {
-        dataSave = FindFirstObjectByType<DataSave>();
+        //dataSave = FindFirstObjectByType<DataSave>(); Temporaly
 
         showStats = GameManager.Instance.showStats;
         showStats.SetCoin(coin);
+    }
+    private void Update()
+    {
+        (criticalChance, criticalDamage, dropChance) = uiUpgrade.GetStat();
+        coin = uiUpgrade.GetCoin();
     }
 
     public void SetLevel(int level)
@@ -97,4 +104,10 @@ public class PlayerData : MonoBehaviour
             gunUnlock.Sort();
         }
     }
+
+    public (float, float, float) GetStat() { return (criticalChance, criticalDamage, dropChance); }
+    public int GetCoin() 
+        { 
+            return coin;
+        }
 }
