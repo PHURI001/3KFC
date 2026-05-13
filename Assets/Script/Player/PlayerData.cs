@@ -1,15 +1,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class PlayerData : MonoBehaviour
 {
-    [SerializeField] private PlayerShowStats showStats;
 
-    private List<bool> LevelUnlock  = new List<bool>() { true };
-    private int coin;
+    private PlayerShowStats showStats;
+
+    //Data
+    [SerializeField] private int coin;
+
+    [SerializeField] private int gunID;
+    [SerializeField] private List<int> gunUnlock = new List<int>();
+
+    [SerializeField] private float criticalChance = 1;
+    [SerializeField] private float criticalDamage = 1;
+    [SerializeField] private float dropChance = 1;
+
+    [SerializeField] private List<bool> LevelUnlock = new List<bool>() { true };
+
+    public static PlayerData Instance;
+    public DataSave dataSave;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else { Destroy(gameObject); }
+    }
 
     private void Start()
     {
+        dataSave = FindFirstObjectByType<DataSave>();
+
         showStats = GameManager.Instance.showStats;
         showStats.SetCoin(coin);
     }
@@ -30,6 +55,13 @@ public class PlayerData : MonoBehaviour
         return LevelUnlock[level - 1];
     }
 
+    //temporary
+    public bool CheckLevel(int level)
+    {
+        if (LevelUnlock.Count <= level) { return false; }
+        return LevelUnlock[level];
+    }
+
     public void AddCoin(int amount)
     {
         coin += amount;
@@ -39,5 +71,30 @@ public class PlayerData : MonoBehaviour
         showStats.SetCoin(coin);
     }
 
+    public void ResetAllData()
+    {
+        coin = 0;
 
+        gunID = 0;
+
+        gunUnlock.Clear();
+
+        criticalChance = 1;
+        criticalDamage = 1;
+        dropChance = 1;
+
+        LevelUnlock.Clear();
+        LevelUnlock.Add(true);
+
+        showStats.SetCoin(coin);
+    }
+
+    public void UnlockGun(int gunID)
+    {
+        if (!gunUnlock.Contains(gunID))
+        {
+            gunUnlock.Add(gunID);
+            gunUnlock.Sort();
+        }
+    }
 }
