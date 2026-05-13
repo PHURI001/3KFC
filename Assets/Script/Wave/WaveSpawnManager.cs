@@ -10,8 +10,6 @@ public class WaveSpawnManager : MonoBehaviour
 
     void Start()
     {
-        waveController.StartWave(waveConfigurations[currentWave]);
-        waveEndTime = Time.time + waveConfigurations[currentWave].waveInterval;
     }
 
     void Update()
@@ -32,6 +30,15 @@ public class WaveSpawnManager : MonoBehaviour
                 waveController.StartWave(waveConfigurations[currentWave]);
                 waveEndTime = Time.time + waveConfigurations[currentWave].waveInterval;
             }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player") && !waveController.IsComplete())
+        {
+            waveController.StartWave(waveConfigurations[currentWave]);
+            waveEndTime = Time.time + waveConfigurations[currentWave].waveInterval;
         }
     }
 }
