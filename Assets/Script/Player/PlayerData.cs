@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerData : MonoBehaviour
 {
 
+<<<<<<< Updated upstream
     private PlayerShowStats showStats;
     private UI_Upgrade uiUpgrade;
 
@@ -32,6 +33,10 @@ public class PlayerData : MonoBehaviour
         }
         else { Destroy(gameObject); }
     }
+=======
+    private List<bool> LevelUnlock  = new List<bool>() { true };
+    public int coin;
+>>>>>>> Stashed changes
 
     private void Start()
     {

@@ -130,6 +130,7 @@ public class Player : MonoBehaviour
         showStats.SetShield(currentSheild);
     }
 
+<<<<<<< Updated upstream
     IEnumerator ShieldRegen()
     {
         yield return new WaitForSeconds(shieldRegenDelay);
@@ -142,4 +143,8 @@ public class Player : MonoBehaviour
         }
         shieldRegenCoroutine = null;
     }
+=======
+    public int GetMaxHealth() { return maxHealth; }
+    
+>>>>>>> Stashed changes
 }

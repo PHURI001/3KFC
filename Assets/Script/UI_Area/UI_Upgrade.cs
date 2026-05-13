@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class UI_Upgrade : MonoBehaviour
 {
+<<<<<<< Updated upstream
     PlayerData playerData;
     private float critChance;
     private float critDmg;
@@ -58,4 +59,17 @@ public class UI_Upgrade : MonoBehaviour
     }
     public (float, float, float) GetStat() { return (critChance, critDmg, dropChance); }
     public int GetCoin() {  return coin; }
+=======
+    public Data_Stats stats;
+    public PlayerData playerdata;
+    public Player player;
+
+    public void HealthUpgrade()
+    {
+        if (playerdata.coin == 10 )
+        {
+            //player.GetMaxHealth() =
+        }
+    }
+>>>>>>> Stashed changes
 }
