@@ -6,6 +6,7 @@ using System.Collections;
 [RequireComponent(typeof(LookAt))]
 public class Player : MonoBehaviour
 {
+    PlayerData playerData;
     [SerializeField] private PlayerShowStats showStats;
 
     [Header("Player Stats")]
@@ -35,9 +36,13 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        playerData = GameManager.Instance.PlayerData;
         LoadGame();
         currentHealth = maxHealth;
         currentSheild = maxSheild;
+
+        //load maxhhealth shield here
+        (maxHealth, maxSheild) = playerData.GetHealthShield();
 
         showStats = GameManager.Instance.showStats;
         ShowStats();
