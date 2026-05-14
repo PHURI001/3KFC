@@ -7,7 +7,7 @@ public class CameraFollower : MonoBehaviour
     [SerializeField] private Player player;
 
     [Header("Camera Settings")]
-    [SerializeField] private float distanceY = 12;
+    [SerializeField] private Vector3 offset;
 
     private void Awake()
     {
@@ -15,12 +15,12 @@ public class CameraFollower : MonoBehaviour
             player = FindFirstObjectByType<Player>();
         if(target == null)
             target = player.transform;
-        if(distanceY <= 0)
-            distanceY = 10f;
+        if(offset.y <= 0)
+            offset.y = 10f;
     }
 
     private void LateUpdate()
     {
-        transform.position = new Vector3(target.position.x, distanceY, target.position.z);
+        transform.position = offset + target.position;
     }
 }

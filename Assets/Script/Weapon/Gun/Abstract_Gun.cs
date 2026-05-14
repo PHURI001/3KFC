@@ -1,13 +1,14 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public abstract class Abstract_Gun : MonoBehaviour
 {
-    //public event Action OnShoot;
+    public event Action OnShoot;
     //public event Action OnReload;
 
-    [field: SerializeField] protected Transform shootPoint;
+    [field: SerializeField] public Transform shootPoint { get; private set; }
     private List<ITakeDamage> ignoreTargets;
 
     public abstract void Shoot();
@@ -24,5 +25,7 @@ public abstract class Abstract_Gun : MonoBehaviour
         {
             comp.Init(speed, ignoreTargets);
         }
+
+        OnShoot?.Invoke();
     }
 }

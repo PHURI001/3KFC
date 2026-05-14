@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StrenghtEnemy
   health: 100
-  speed: 0.2
+  speed: 1
   strength: 10
   PlayerLocate: {fileID: 351785259}
 --- !u!195 &60267591
@@ -816,7 +816,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StrenghtEnemy
   health: 100
-  speed: 0.2
+  speed: 1
   strength: 10
   PlayerLocate: {fileID: 351785259}
 --- !u!195 &500650146
@@ -1660,7 +1660,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StrenghtEnemy
   health: 100
-  speed: 0.2
+  speed: 1
   strength: 10
   PlayerLocate: {fileID: 351785259}
 --- !u!195 &1109425952
@@ -1828,6 +1828,7 @@ MonoBehaviour:
   InputReader: {fileID: 0}
   SceneManager: {fileID: 0}
   PlayerData: {fileID: 0}
+  showStats: {fileID: 0}
 --- !u!114 &1416360371
 MonoBehaviour:
   m_ObjectHideFlags: 0
