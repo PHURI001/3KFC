@@ -3,6 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(InputReader))]
 [RequireComponent(typeof(SceneManager))]
 [RequireComponent(typeof(PlayerData))]
+[RequireComponent(typeof(DataSave))]
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
@@ -11,6 +12,7 @@ public class GameManager : MonoBehaviour
     public SceneManager SceneManager;
     public PlayerData PlayerData;
     public PlayerShowStats showStats;
+    public DataSave DataSave;
 
     private void Awake()
     {
@@ -23,6 +25,7 @@ public class GameManager : MonoBehaviour
             SceneManager = GetComponent<SceneManager>();
             PlayerData = GetComponent<PlayerData>();
             showStats = GetComponentInChildren<PlayerShowStats>();
+            DataSave = GetComponent<DataSave>();
         }
         else
         {

@@ -65,4 +65,12 @@ public class DataSave : MonoBehaviour
         Debug.Log("Load Complete");
     }
 
+    public void DeleteData()
+    {
+        string path = Application.persistentDataPath + Path.AltDirectorySeparatorChar + "SaveData.json";
+        if (File.Exists(path))
+        {
+            File.Delete(path);
+        }
+    }
 }

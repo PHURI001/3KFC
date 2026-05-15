@@ -13,6 +13,7 @@ public class UpgradeUI : MonoBehaviour
     private void Start()
     {
         PlayerData = GameManager.Instance.PlayerData;
+
         CoinUpdate();
     }
 

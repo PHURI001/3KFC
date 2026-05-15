@@ -15,6 +15,7 @@ public class PlayerData : MonoBehaviour
 {
 
     private PlayerShowStats showStats;
+    Player player;
 
     //Data
     [SerializeField] private int maxHealth = 10;
@@ -46,6 +47,7 @@ public class PlayerData : MonoBehaviour
     private void Start()
     {
         dataSave = FindFirstObjectByType<DataSave>();
+        player = FindFirstObjectByType<Player>();
 
         showStats = GameManager.Instance.showStats;
         showStats.SetCoin(coin);
@@ -123,26 +125,31 @@ public class PlayerData : MonoBehaviour
         }
     }
 
-    private int upgradePer = 1;
+    private int upgradeHealthValue = 5;
+    private int upgradeShieldValue = 2;
+    private float upgradeOtherValue = 0.1f;
     public void Upgrade(UpgradeType type)
     {
         switch (type)
         {
             case UpgradeType.Health:
-                maxHealth += upgradePer;
+                maxHealth += upgradeHealthValue;
                 break;
             case UpgradeType.Shield:
-                maxSheild += upgradePer;
+                maxSheild += upgradeShieldValue;
                 break;
             case UpgradeType.CritDamage:
-                criticalDamage += 0.1f;
+                criticalDamage += upgradeOtherValue;
                 break;
             case UpgradeType.CritChance:
-                criticalChance += 0.1f;
+                criticalChance += upgradeOtherValue;
                 break;
             case UpgradeType.DropChance:
-                dropChance += 0.1f;
+                dropChance += upgradeOtherValue;
                 break;
-        }
+        };
+        player.Init();
     }
+
+    public (float, float, float) GetData() { return (criticalChance, criticalDamage, dropChance); }
 }
