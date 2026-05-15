@@ -96,7 +96,6 @@ public class Bullet : MonoBehaviour
         {
             Vector3 reflectDir = Vector3.Reflect(transform.forward, hit.normal);
             transform.forward = reflectDir.normalized;
-            Debug.Log(hit.collider.name);
         }
 
         bounceCount++;
