@@ -15,9 +15,14 @@ public class Bullet : MonoBehaviour
     [SerializeField] private Bullet_Attribute_MoveController Attribute_Move;
     [SerializeField] private Bullet_Attribute_Explosive[] Attribute_Explosive;
     [SerializeField] private Bullet_Attribute_ApplyEffect[] Attribute_ApplyEffect;
-    [SerializeField] bool IsPierce = false;
+    [SerializeField] private bool isPierce = false;
+    [SerializeField] private LayerMask bouncesCheckLayerMask;
+    [SerializeField] private float bouncesCheckDistance = 1.5f;
+    [SerializeField] private int maxBounces = 0;
 
+    private int bounceCount = 0;
     private List<ITakeDamage> ignoreTargets;
+    #region MainLogic
     private void Awake()
     {
         Init(speed);
@@ -61,7 +66,6 @@ public class Bullet : MonoBehaviour
         {
             ActiveExplosiveAttribute(Attribute_Explosive);
             OnExplode?.Invoke();
-            Debug.Log(other.name);
         }
         else if (other.TryGetComponent<ITakeDamage>(out ITakeDamage target))
         {
@@ -70,13 +74,34 @@ public class Bullet : MonoBehaviour
 
         OnHit?.Invoke();
 
-        if (IsPierce == false)
+        if (isPierce)
+        {
+            return;
+        }
+        else if (bounceCount < maxBounces)
+        {
+            TryBounces();
+        }
+        else
         {
             Destroy(gameObject);
         }
-
     }
 
+    public void TryBounces()
+    {
+        Ray ray = new Ray(transform.position - transform.forward * 0.5f, transform.forward);
+
+        if (Physics.Raycast(ray, out RaycastHit hit, bouncesCheckDistance, bouncesCheckLayerMask))
+        {
+            Vector3 reflectDir = Vector3.Reflect(transform.forward, hit.normal);
+            transform.forward = reflectDir.normalized;
+            Debug.Log(hit.collider.name);
+        }
+
+        bounceCount++;
+    }
+    #endregion
     #region Public Method
     public void DoDamage(ITakeDamage target,float NewBaseDamage)
     {
