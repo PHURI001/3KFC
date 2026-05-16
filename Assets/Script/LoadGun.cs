@@ -17,6 +17,6 @@ public class LoadGun : MonoBehaviour
     {
         //logic here
 
-        //check current gun by using >> playerData.GetGunUnlock()
+        //check current gun by using >> playerData.CurrentGun()
     }
 }
