@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 8626235656434699815}
   - component: {fileID: 8121412031417749792}
   m_Layer: 0
-  m_Name: Nano Machine Gun
+  m_Name: Multiple Shot Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -230,6 +230,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gun_MultipleShot
   <shootPoint>k__BackingField: {fileID: 1185719041383689386}
+  <Bullet>k__BackingField: {fileID: 3914273318236099070, guid: a63ba37860d38d443a74a14a552e101b, type: 3}
+  reloadTime: 1
   data: {fileID: 11400000, guid: 42e68074f072417498d5a329bc13a2f9, type: 2}
 --- !u!114 &8121412031417749792
 MonoBehaviour:

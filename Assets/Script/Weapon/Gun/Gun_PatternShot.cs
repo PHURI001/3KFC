@@ -9,7 +9,7 @@ public class Gun_PatternShot : Abstract_Gun
     {
         foreach (Transform t in spawnPoints)
         {
-            SpawnBullet(data.Bullet, t.position, transform.forward, data.Speed);
+            SpawnBullet(Bullet, t.position, transform.forward, data.Speed);
         }
     }
 }

@@ -10,6 +10,7 @@ public class Bullet : MonoBehaviour
 
     [field: SerializeField] public float BaseDamage { get; private set; } = 30f;
     [field: SerializeField] public float speed { get; private set; } = 1.0f;
+    [field: SerializeField] public float lifeTime { get; private set; } = 10.0f;
 
     [Header("Attribute")]
     [SerializeField] private Bullet_Attribute_MoveController Attribute_Move;
@@ -27,6 +28,7 @@ public class Bullet : MonoBehaviour
     {
         Init(speed);
         if (ignoreTargets == null) ignoreTargets = new List<ITakeDamage>();
+        Destroy(gameObject, lifeTime);
     }
 
     public void Init(float _speed, List<ITakeDamage> _ignoreTarget)

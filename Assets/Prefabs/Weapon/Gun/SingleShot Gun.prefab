@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3540389650548575858}
   - component: {fileID: 2853833457354316892}
   m_Layer: 0
-  m_Name: Basic Gun
+  m_Name: SingleShot Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -105,7 +105,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1e151822e9fa46449804e7f83d6b193, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gun_SingleShot
-  shootPoint: {fileID: 5125132435728440335}
+  <shootPoint>k__BackingField: {fileID: 5125132435728440335}
+  <Bullet>k__BackingField: {fileID: 3914273318236099070, guid: a63ba37860d38d443a74a14a552e101b, type: 3}
+  reloadTime: 1
   data: {fileID: 11400000, guid: a42814c0277eef740bceb546e865a2dd, type: 2}
 --- !u!1 &8238981879881167591
 GameObject:
