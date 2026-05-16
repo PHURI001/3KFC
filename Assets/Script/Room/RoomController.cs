@@ -4,6 +4,8 @@ using UnityEngine.Rendering.Universal;
 
 public class RoomController : MonoBehaviour
 {
+    public static RoomController Instance { get; private set; }
+
     [Header("Reference")]
     [SerializeField] private EndGameUI endGameUI;
 
@@ -19,6 +21,18 @@ public class RoomController : MonoBehaviour
 
     private float startTime = float.MinValue;
     private float endTime = float.MinValue;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void Start()
     {

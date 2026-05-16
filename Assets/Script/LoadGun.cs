@@ -6,16 +6,20 @@ public class LoadGun : MonoBehaviour
 
     PlayerData playerData;
     public GunPrefab gunPrefab;
+    public BulletPrefab bulletPrefab;
 
-    private void Awake()
-    {
-        gunPrefab = GameManager.Instance.GunPrefab;
-        playerData = GameManager.Instance.PlayerData;
-    }
+    [SerializeField] private WeaponHolder weaponHolder;
 
     private void Start()
     {
+        gunPrefab = GameManager.Instance.GunPrefab;
+        bulletPrefab = GameManager.Instance.BulletPrefab;
+        playerData = GameManager.Instance.PlayerData;
+
         //logic here
+        GameObject gun = gunPrefab.GetGunPrefab(playerData.CurrentGun());
+        GameObject bullet = bulletPrefab.GetGunPrefab(playerData.CurrentBullet());
+        weaponHolder.SetNewWeapon(gun, bullet);
 
         //check current gun by using >> playerData.GetGunUnlock()
     }

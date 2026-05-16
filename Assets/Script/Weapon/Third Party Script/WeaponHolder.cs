@@ -18,11 +18,11 @@ public class WeaponHolder : MonoBehaviour
     private void Awake()
     {
         if (ignoreTargets == null) ignoreTargets = new List<ITakeDamage>();
-        mainGun = GunObj.GetComponent<Abstract_Gun>();
+        //mainGun = GunObj.GetComponent<Abstract_Gun>();
     }
     private void Start()
     {
-        SetNewWeapon(GunObj, BulletPrefab);
+        //SetNewWeapon(GunObj, BulletPrefab);
     }
     private void OnEnable()
     {
@@ -37,14 +37,14 @@ public class WeaponHolder : MonoBehaviour
 
     public void SetNewWeapon(GameObject gunPrefab, GameObject bulletPrefab)
     {
-        if (mainGun == null) mainGun = GunObj.GetComponent<Abstract_Gun>();
-
         GameObject gunObj = Instantiate(gunPrefab, GunHolder.transform.position, Quaternion.identity);
         gunObj.transform.parent = GunHolder.transform;
         //gunObj.transform.position = Vector3.zero;
         GunObj = gunObj;
         mainGun = gunObj.GetComponent<Abstract_Gun>();
         mainGun.Bullet = bulletPrefab;
+
+        if (mainGun == null) mainGun = GunObj.GetComponent<Abstract_Gun>();
     }
 
     private void Update()

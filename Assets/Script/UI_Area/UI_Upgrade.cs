@@ -18,8 +18,8 @@ public class UI_Upgrade : MonoBehaviour
     }
     private void Update()
     {
-        (critChance, critDmg, dropChance) = playerData.GetStat();
-        coin = playerData.GetCoin();
+        (critChance, critDmg, dropChance) = playerData.GetData();
+        coin = playerData.GetCoins();
     }
     public void HealthUpgrade()
     {

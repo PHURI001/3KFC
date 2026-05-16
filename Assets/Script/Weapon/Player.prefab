@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 1627500811959712950}
   - component: {fileID: 3330198064566648764}
   - component: {fileID: 8708285767073823077}
+  - component: {fileID: 6272233239759433560}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -138,8 +139,8 @@ MonoBehaviour:
   <IgnoreTargetObjects>k__BackingField:
   - {fileID: 6704637276815201209}
   <GunHolder>k__BackingField: {fileID: 6836909283517154429}
-  <GunObj>k__BackingField: {fileID: 2768987597577699515, guid: 27a6b37d068285a46941d00fda587681, type: 3}
-  <BulletPrefab>k__BackingField: {fileID: 5531160445526992571, guid: 63a3d3e77b1c8de45931070dbfa21057, type: 3}
+  <GunObj>k__BackingField: {fileID: 0}
+  <BulletPrefab>k__BackingField: {fileID: 0}
 --- !u!54 &7925050907668267108
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -213,6 +214,22 @@ MonoBehaviour:
   criticalChance: 1
   dropChance: 1
   isGameOver: 0
+--- !u!114 &6272233239759433560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6704637276815201209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2adc4808dee5e4845a5357965abd502b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LoadGun
+  player: {fileID: 6704637276815201209}
+  gunPrefab: {fileID: 0}
+  bulletPrefab: {fileID: 0}
+  weaponHolder: {fileID: 1376684767588694400}
 --- !u!1 &6836909283517154429
 GameObject:
   m_ObjectHideFlags: 0

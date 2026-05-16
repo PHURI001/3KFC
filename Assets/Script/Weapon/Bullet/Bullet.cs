@@ -22,12 +22,12 @@ public class Bullet : MonoBehaviour
     [SerializeField] private int maxBounces = 0;
 
     private int bounceCount = 0;
-    private List<ITakeDamage> ignoreTargets;
+    private List<ITakeDamage> ignoreTargets = new List<ITakeDamage>();
     #region MainLogic
     private void Awake()
     {
-        Init(speed);
         if (ignoreTargets == null) ignoreTargets = new List<ITakeDamage>();
+        Init(speed);
         Destroy(gameObject, lifeTime);
     }
 
@@ -157,14 +157,13 @@ public class Bullet : MonoBehaviour
         foreach (Collider col in colliders)
         {
             if (col == null) continue;
-            if (col.TryGetComponent<ITakeDamage>(out ITakeDamage comp))
-            {
-                if (ignoreTargets.Contains(comp)) continue;
-                //Find Target That Have ITakeDamage
-                posibleTargets.Add(col.transform);
-            }
+            ITakeDamage comp = col.GetComponentInParent<ITakeDamage>();
+            Debug.Log($"ignoreTargets count: {ignoreTargets.Count}");
+            Debug.Log($"Contains result: {ignoreTargets.Contains(comp)}");
+            if (comp == null) continue;
+            if (ignoreTargets.Contains(comp)) continue;
+            posibleTargets.Add(col.transform);
         }
-
         return posibleTargets;
     }
     #endregion

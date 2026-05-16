@@ -24,6 +24,7 @@ public class PlayerData : MonoBehaviour
     [SerializeField] private int coin;
 
     [SerializeField] private int gunID = 1;
+    [SerializeField] private int bulletID = 1;
     [SerializeField] private List<int> gunUnlock = new List<int>() { 1};
 
     [SerializeField] private float criticalChance = 1;
@@ -158,5 +159,6 @@ public class PlayerData : MonoBehaviour
     public (float, float, float) GetData() { return (criticalChance, criticalDamage, dropChance); }
 
     public int CurrentGun() { return gunID; }
+    public int CurrentBullet() { return bulletID; }
     public List<int> GetGunUnlock() { return gunUnlock; }
 }

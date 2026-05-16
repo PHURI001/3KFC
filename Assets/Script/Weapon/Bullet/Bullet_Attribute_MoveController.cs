@@ -24,6 +24,8 @@ public class Bullet_Attribute_MoveController
 
         if (targets == null)
         {
+            Debug.Log(HomingRange);
+            Debug.Log(curretBullet.name);
             targets = FindNearestTargetInRage(HomingRange, curretBullet.transform.position);
             return;
         }
@@ -47,11 +49,12 @@ public class Bullet_Attribute_MoveController
 
     private Transform FindNearestTargetInRage(float Range, Vector3 startPos)
     {
+        Debug.Log(1);
         List<Transform> posibleTargets = curretBullet.FindTransformTargetInRange(Range);
-
+        Debug.Log(2);
         Transform nearestTarget = null;
         float closetDistanceSqrMagnitude = float.MaxValue;
-
+        Debug.Log(3);
         foreach (Transform target in posibleTargets)
         {
             if (!target.gameObject.activeSelf) continue;
@@ -62,7 +65,7 @@ public class Bullet_Attribute_MoveController
                 nearestTarget = target;
             }
         }
-
+        Debug.Log(4);
         return nearestTarget;
     }
 }
