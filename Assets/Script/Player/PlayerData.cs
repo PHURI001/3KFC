@@ -1,18 +1,30 @@
 using System.Collections.Generic;
-using TMPro.EditorUtilities;
 using UnityEngine;
+
+public enum UpgradeType
+{
+    Health = 0,
+    Shield = 1,
+    CritDamage = 2,
+    CritChance = 3,
+    DropChance = 4
+}
 
 [System.Serializable]
 public class PlayerData : MonoBehaviour
 {
+
     private PlayerShowStats showStats;
-    private UI_Upgrade uiUpgrade;
+    Player player;
 
     //Data
+    [SerializeField] private int maxHealth = 10;
+    [SerializeField] private int maxSheild = 5;
+
     [SerializeField] private int coin;
 
-    [SerializeField] private int gunID;
-    [SerializeField] private List<int> gunUnlock = new List<int>();
+    [SerializeField] private int gunID = 1;
+    [SerializeField] private List<int> gunUnlock = new List<int>() { 1};
 
     [SerializeField] private float criticalChance = 1;
     [SerializeField] private float criticalDamage = 1;
@@ -34,16 +46,14 @@ public class PlayerData : MonoBehaviour
 
     private void Start()
     {
-        //dataSave = FindFirstObjectByType<DataSave>(); Temporaly
+        dataSave = FindFirstObjectByType<DataSave>();
+        player = FindFirstObjectByType<Player>();
 
         showStats = GameManager.Instance.showStats;
         showStats.SetCoin(coin);
     }
-    private void Update()
-    {
-        (criticalChance, criticalDamage, dropChance) = uiUpgrade.GetStat();
-        coin = uiUpgrade.GetCoin();
-    }
+
+    public (int,int) GetHealthShield() { return (maxHealth, maxSheild); }
 
     public void SetLevel(int level)
     {
@@ -77,6 +87,17 @@ public class PlayerData : MonoBehaviour
         showStats.SetCoin(coin);
     }
 
+    public void SpendCoin(int amount)
+    {
+        coin -= amount;
+
+        if (showStats == null) { showStats = FindFirstObjectByType<PlayerShowStats>(); }
+
+        showStats.SetCoin(coin);
+    }
+
+    public int GetCoins() { return coin; }
+
     public void ResetAllData()
     {
         coin = 0;
@@ -103,10 +124,39 @@ public class PlayerData : MonoBehaviour
             gunUnlock.Sort();
         }
     }
+    public void SetGun(int id)
+    {
+        gunID = id;
+    }
 
-    public (float, float, float) GetStat() { return (criticalChance, criticalDamage, dropChance); }
-    public int GetCoin() 
-        { 
-            return coin;
-        }
+    private int upgradeHealthValue = 5;
+    private int upgradeShieldValue = 2;
+    private float upgradeOtherValue = 0.1f;
+    public void Upgrade(UpgradeType type)
+    {
+        switch (type)
+        {
+            case UpgradeType.Health:
+                maxHealth += upgradeHealthValue;
+                break;
+            case UpgradeType.Shield:
+                maxSheild += upgradeShieldValue;
+                break;
+            case UpgradeType.CritDamage:
+                criticalDamage += upgradeOtherValue;
+                break;
+            case UpgradeType.CritChance:
+                criticalChance += upgradeOtherValue;
+                break;
+            case UpgradeType.DropChance:
+                dropChance += upgradeOtherValue;
+                break;
+        };
+        player.Init();
+    }
+
+    public (float, float, float) GetData() { return (criticalChance, criticalDamage, dropChance); }
+
+    public int CurrentGun() { return gunID; }
+    public List<int> GetGunUnlock() { return gunUnlock; }
 }

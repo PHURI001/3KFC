@@ -6,17 +6,18 @@ using System.Collections;
 [RequireComponent(typeof(LookAt))]
 public class Player : MonoBehaviour
 {
+    PlayerData playerData;
     [SerializeField] private PlayerShowStats showStats;
 
     [Header("Player Stats")]
-    [SerializeField] private int maxHealth = 10;
+    [SerializeField] private int maxHealth;
     [SerializeField] private int _currentHealth;
     private int currentHealth
     {
         get { return _currentHealth; }
         set { _currentHealth = Mathf.Clamp(value, 0, maxHealth); }
     }
-    [SerializeField] private int maxSheild = 5;
+    [SerializeField] private int maxSheild;
     [SerializeField] private int _currentSheild;
     private int currentSheild
     {
@@ -35,11 +36,22 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        LoadGame();
+        playerData = GameManager.Instance.PlayerData;
+        showStats = GameManager.Instance.showStats;
+
+        GameManager.Instance.DataSave.LoadData();
+
+        Init();
+    }
+
+    public void Init()
+    {
+        (maxHealth, maxSheild) = playerData.GetHealthShield();
         currentHealth = maxHealth;
         currentSheild = maxSheild;
 
-        showStats = GameManager.Instance.showStats;
+        (criticalChance, criticalDamage, dropChance) = playerData.GetData();
+
         ShowStats();
     }
 
@@ -101,34 +113,35 @@ public class Player : MonoBehaviour
         return stats;
     }
 
-    public void SaveGame()
-    {
-        GameData data = new GameData();
-        data.criticalDamage = criticalDamage;
-        data.criticalChance = criticalChance;
-        data.dropChance = dropChance;
-        string json = JsonUtility.ToJson(data);
-        File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
-    }
+    //public void SaveGame()
+    //{
+    //    GameData data = new GameData();
+    //    data.criticalDamage = criticalDamage;
+    //    data.criticalChance = criticalChance;
+    //    data.dropChance = dropChance;
+    //    string json = JsonUtility.ToJson(data);
+    //    File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
+    //}
 
-    public void LoadGame()
-    {
-        string path = Application.persistentDataPath + "/savefile.json";
-        if (File.Exists(path))
-        {
-            string json = File.ReadAllText(path);
-            GameData data = JsonUtility.FromJson<GameData>(json);
-            criticalDamage = data.criticalDamage;
-            criticalChance = data.criticalChance;
-            dropChance = data.dropChance;
-        }
-    }
+    //public void LoadGame()
+    //{
+    //    string path = Application.persistentDataPath + "/savefile.json";
+    //    if (File.Exists(path))
+    //    {
+    //        string json = File.ReadAllText(path);
+    //        GameData data = JsonUtility.FromJson<GameData>(json);
+    //        criticalDamage = data.criticalDamage;
+    //        criticalChance = data.criticalChance;
+    //        dropChance = data.dropChance;
+    //    }
+    //}
 
     private void ShowStats()
     {
         showStats.SetHealth(currentHealth);
         showStats.SetShield(currentSheild);
     }
+
     IEnumerator ShieldRegen()
     {
         yield return new WaitForSeconds(shieldRegenDelay);
@@ -141,6 +154,6 @@ public class Player : MonoBehaviour
         }
         shieldRegenCoroutine = null;
     }
-    public int GetMaxHealth() { return maxHealth; }
-    
+
+
 }
