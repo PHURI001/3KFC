@@ -23,8 +23,8 @@ public class PlayerData : MonoBehaviour
 
     [SerializeField] private int coin;
 
-    [SerializeField] private int gunID;
-    [SerializeField] private List<int> gunUnlock = new List<int>();
+    [SerializeField] private int gunID = 1;
+    [SerializeField] private List<int> gunUnlock = new List<int>() { 1};
 
     [SerializeField] private float criticalChance = 1;
     [SerializeField] private float criticalDamage = 1;
@@ -124,6 +124,10 @@ public class PlayerData : MonoBehaviour
             gunUnlock.Sort();
         }
     }
+    public void SetGun(int id)
+    {
+        gunID = id;
+    }
 
     private int upgradeHealthValue = 5;
     private int upgradeShieldValue = 2;
@@ -152,4 +156,7 @@ public class PlayerData : MonoBehaviour
     }
 
     public (float, float, float) GetData() { return (criticalChance, criticalDamage, dropChance); }
+
+    public int CurrentGun() { return gunID; }
+    public List<int> GetGunUnlock() { return gunUnlock; }
 }
