@@ -392,6 +392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c5e79ed3577f8042873ca1bbb9321d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
+  popUpPrefab: {fileID: 0}
   endGameUI: {fileID: 1577152490}
 --- !u!4 &160653887 stripped
 Transform:

@@ -28,7 +28,7 @@ public class MapDataTracker : MonoBehaviour
         RoomController.Instance.TotalCoinEarn += amount;
     }
 
-    public void AddDamageDealData(int amount)
+    public void AddDamageDealData(int amount,bool isCri)
     {
         RoomController.Instance.TotalDamageDeal += amount;
     }

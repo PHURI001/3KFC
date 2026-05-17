@@ -896,6 +896,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c5e79ed3577f8042873ca1bbb9321d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
+  popUpPrefab: {fileID: 1775815109980537191, guid: 22f4e13ad27c5ed4d964a12a2a6f3276, type: 3}
   endGameUI: {fileID: 1144714038263262359}
 --- !u!1 &5238828075240991155
 GameObject:

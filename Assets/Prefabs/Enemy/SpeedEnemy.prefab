@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 7271339569655506101}
   - component: {fileID: 1720794311991078568}
   - component: {fileID: 5372862282479453117}
+  - component: {fileID: -8416795033880391579}
   m_Layer: 0
   m_Name: SpeedEnemy
   m_TagString: Enemy
@@ -233,6 +234,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: -0.477, z: 0}
+--- !u!114 &-8416795033880391579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9067085699953358134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb772d0441e46e64abf08c8b85365770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy_PopUpTracker
+  enemy: {fileID: 7271339569655506101}
 --- !u!1001 &411665892101883167
 PrefabInstance:
   m_ObjectHideFlags: 0

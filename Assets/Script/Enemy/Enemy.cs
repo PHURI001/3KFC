@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour, ITakeDamage
 {
-    public event Action<int> OnTakeDamage;
+    public event Action<int,bool> OnTakeDamage;
     public event Action<int> OnCoinDrop;
     public event Action OnDeath;
 
@@ -110,16 +110,18 @@ public class Enemy : MonoBehaviour, ITakeDamage
         //Calculate Damage
         bool isCritical = UnityEngine.Random.Range(0f, 100f) < dataDamage.criticalChance;
         int finalDamage;
+        bool isCri = false;
         Debug.Log(dataDamage.damage);
         if (isCritical)
         {
-            finalDamage = Mathf.RoundToInt(dataDamage.damage * (dataDamage.criticalDamage / 100));
+            finalDamage = Mathf.RoundToInt(dataDamage.damage * (1 + dataDamage.criticalDamage / 100));
+            isCri = true;
         }
         else
         {
             finalDamage = dataDamage.damage;
         }
-        OnTakeDamage?.Invoke(finalDamage);
+        OnTakeDamage?.Invoke(finalDamage, isCri);
         DamageTaken += finalDamage;
         //Check Death
         if (health - finalDamage <= 0)

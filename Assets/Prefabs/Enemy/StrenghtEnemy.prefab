@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7924639987118678593}
   - component: {fileID: 4403748745569844227}
   - component: {fileID: 8866503889887577631}
+  - component: {fileID: -2518677670361769762}
   m_Layer: 0
   m_Name: StrenghtEnemy
   m_TagString: Enemy
@@ -143,6 +144,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: -0.492, z: 0}
+--- !u!114 &-2518677670361769762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 699184950531938888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb772d0441e46e64abf08c8b85365770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy_PopUpTracker
+  enemy: {fileID: 7592878193390542179}
 --- !u!1 &5050112719117127297
 GameObject:
   m_ObjectHideFlags: 0

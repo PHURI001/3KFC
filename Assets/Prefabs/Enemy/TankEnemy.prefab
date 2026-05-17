@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1975398452686800631}
   - component: {fileID: 5382182357595984443}
   - component: {fileID: 92152335286709172}
+  - component: {fileID: -7095030005640992484}
   m_Layer: 0
   m_Name: TankEnemy
   m_TagString: Enemy
@@ -143,6 +144,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: -0.477, z: 0}
+--- !u!114 &-7095030005640992484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37712732775642143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb772d0441e46e64abf08c8b85365770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy_PopUpTracker
+  enemy: {fileID: 1975398452686800631}
 --- !u!1 &4510757265272766386
 GameObject:
   m_ObjectHideFlags: 0
