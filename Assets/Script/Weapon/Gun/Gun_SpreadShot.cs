@@ -19,7 +19,7 @@ public class Gun_SpreadShot : Abstract_Gun
         }
         else
         {
-            SpawnBullet(data.Bullet, shootPoint.position, transform.forward, data.Speed);
+            SpawnBullet(Bullet, shootPoint.position, transform.forward, data.Speed);
         }
 
         for (int i = 0; i < bulletCount; i++)
@@ -27,7 +27,7 @@ public class Gun_SpreadShot : Abstract_Gun
             float currentAngle = startAngle + angleStep * i;
             Quaternion rotation = Quaternion.Euler(0, currentAngle, 0);
             Vector3 dir = rotation * shootPoint.forward;
-            SpawnBullet(data.Bullet, shootPoint.position, dir, data.Speed);
+            SpawnBullet(Bullet, shootPoint.position, dir, data.Speed);
         }
     }
 }

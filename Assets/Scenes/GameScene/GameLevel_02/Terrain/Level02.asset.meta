@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/GameScene/GameLevel_02/Terrain/Level02.asset.meta
+guid: c5ac7f517c33b9145b74176e75cdd7e1
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 15600000
+========
+guid: 49c23e1d625958f46994d861ebf52815
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 112000000
+>>>>>>>> parent of 5c5c370 (Map 2):Assets/Scenes/GameScene/GameLevel_01/Light/LightingData.asset.meta
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

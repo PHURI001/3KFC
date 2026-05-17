@@ -136,7 +136,12 @@ MonoBehaviour:
   - <ExplosiveRange>k__BackingField: 5
     DamageMultiply: 1
   Attribute_ApplyEffect: []
-  IsPierce: 0
+  isPierce: 0
+  bouncesCheckLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  bouncesCheckDistance: 1.5
+  maxBounces: 5
 --- !u!54 &7269879927459878573
 Rigidbody:
   m_ObjectHideFlags: 0

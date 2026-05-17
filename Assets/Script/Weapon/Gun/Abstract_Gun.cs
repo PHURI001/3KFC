@@ -9,9 +9,30 @@ public abstract class Abstract_Gun : MonoBehaviour
     //public event Action OnReload;
 
     [field: SerializeField] public Transform shootPoint { get; private set; }
+    [field: SerializeField] public GameObject Bullet { get; set; }
+
+    [SerializeField]private float reloadTime = 1f;
+
     private List<ITakeDamage> ignoreTargets;
+    private float nextTimeShoot = float.MinValue;
+    private bool isFiring = false;
+    public void SetGunFire(bool toggle)
+    {
+        isFiring = toggle;
+    }
 
     public abstract void Shoot();
+
+    private void Update()
+    {
+        if (Time.time < nextTimeShoot) return;
+
+        if (isFiring)
+        {
+            Shoot();
+            nextTimeShoot = Time.time + reloadTime;
+        }
+    }
 
     public void Init(List<ITakeDamage> _ignoreTargets)
     {

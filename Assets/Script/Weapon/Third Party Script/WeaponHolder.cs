@@ -6,33 +6,50 @@ using UnityEngine.InputSystem;
 
 public class WeaponHolder : MonoBehaviour
 {
-    [field: SerializeField] public List<GameObject> IgnoreTargetObjects {  get; private set; }
-    [field: SerializeField] public Abstract_Gun MainGun { get; private set; }
 
+    [field: SerializeField] public List<GameObject> IgnoreTargetObjects {  get; private set; }
+    [field: SerializeField] public GameObject GunHolder { get; private set; }
+    [field: SerializeField] public GameObject GunObj { get; private set; }
+    [field: SerializeField] public GameObject BulletPrefab { get; private set; }
+
+    private Abstract_Gun mainGun;
     private List<ITakeDamage> ignoreTargets;
 
     private void Awake()
     {
         if (ignoreTargets == null) ignoreTargets = new List<ITakeDamage>();
+        //mainGun = GunObj.GetComponent<Abstract_Gun>();
     }
-
+    private void Start()
+    {
+        //SetNewWeapon(GunObj, BulletPrefab);
+    }
     private void OnEnable()
     {
         UpdateIgnoreTarget();
-        MainGun?.Init(ignoreTargets);
+        mainGun?.Init(ignoreTargets);
     }
 
-    public void ShootOneTime()
+    public void Shoot(bool toggle)
     {
-        MainGun.Shoot();
+        mainGun.SetGunFire(toggle);
+    }
+
+    public void SetNewWeapon(GameObject gunPrefab, GameObject bulletPrefab)
+    {
+        GameObject gunObj = Instantiate(gunPrefab, GunHolder.transform.position, Quaternion.identity);
+        gunObj.transform.parent = GunHolder.transform;
+        //gunObj.transform.position = Vector3.zero;
+        GunObj = gunObj;
+        mainGun = gunObj.GetComponent<Abstract_Gun>();
+        mainGun.Bullet = bulletPrefab;
+
+        if (mainGun == null) mainGun = GunObj.GetComponent<Abstract_Gun>();
     }
 
     private void Update()
     {
-        if (Mouse.current.leftButton.wasPressedThisFrame)
-        {
-            ShootOneTime();
-        }
+        Shoot(Mouse.current.leftButton.isPressed);
     }
 
     private void UpdateIgnoreTarget()

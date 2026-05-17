@@ -1,10 +1,43 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class RoomController : MonoBehaviour
 {
+    public static RoomController Instance { get; private set; }
+
+    [Header("Reference")]
+    [SerializeField] private EndGameUI endGameUI;
+
+    [Header("Map Room")]
     [SerializeField] private List<Room> roomsRemaining;
     [SerializeField] private int nextLevelUnlock = 0;
+
+    [Header("Other Data")]
+    [field:SerializeField] public int TotalDamageDeal {  get; set; }
+    [field:SerializeField] public int TotalCoinEarn {  get; set; }
+    [field:SerializeField] public float TimeToClear {  get; private set; }
+    [field: SerializeField] public bool IsMapClear { get; private set; } = false;
+
+    private float startTime = float.MinValue;
+    private float endTime = float.MinValue;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void Start()
+    {
+        startTime = Time.time;
+    }
 
     private void OnEnable()
     {
@@ -23,8 +56,14 @@ public class RoomController : MonoBehaviour
 
     public void DoCompleteMap()
     {
+        IsMapClear = true;
+        endTime = Time.time;
+        TimeToClear = endTime - startTime;
+
         GameManager.Instance.PlayerData.SetLevel(nextLevelUnlock);
-        GameManager.Instance.SceneManager.GoToMain();
+        endGameUI.gameObject.SetActive(true);
+        endGameUI.OpenUI(TimeToClear, TotalCoinEarn, TotalDamageDeal);
+        //GameManager.Instance.SceneManager.GoToMain();
     }
 
     private void UpdateRoomClear(Room room)

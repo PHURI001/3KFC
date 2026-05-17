@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerData))]
 [RequireComponent(typeof(DataSave))]
 [RequireComponent(typeof(GunPrefab))]
+[RequireComponent(typeof(BulletPrefab))]
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
@@ -15,6 +16,7 @@ public class GameManager : MonoBehaviour
     public PlayerShowStats showStats;
     public DataSave DataSave;
     public GunPrefab GunPrefab;
+    public BulletPrefab BulletPrefab;
 
     private void Awake()
     {

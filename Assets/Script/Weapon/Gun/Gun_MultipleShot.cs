@@ -12,7 +12,7 @@ public class Gun_MultipleShot : Abstract_Gun
     {
         for (int i = 0; i < bulletToSpawn; i++)
         {
-            SpawnBullet(data.Bullet, shootPoint.position, transform.forward, data.Speed);
+            SpawnBullet(Bullet, shootPoint.position, transform.forward, data.Speed);
             yield return new WaitForSeconds(timeInterval);
         }
     }
