@@ -6,6 +6,7 @@ public class PlayerShowStats : MonoBehaviour
     [SerializeField] private TMP_Text shieldText;
     [SerializeField] private TMP_Text healthText;
     [SerializeField] private TMP_Text coinText;
+    [SerializeField] private TMP_Text statsText;
 
     public void SetHealth(int amount)
     {
@@ -20,5 +21,10 @@ public class PlayerShowStats : MonoBehaviour
     public void SetCoin(int amount)
     {
         coinText.text = $"Coins: {amount}";
+    }
+
+    public void SetStats(float criticalChance, float criticalDamage, float dropChance)
+    {
+        statsText.text = $"Critical Chance: {criticalChance}%\nCritical Damage: {criticalDamage}%\nDrop Chance: {dropChance}%";
     }
 }
