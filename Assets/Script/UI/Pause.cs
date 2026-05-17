@@ -72,4 +72,9 @@ public class Pause : MonoBehaviour
     {
         hudCanvasGroup.alpha = hudToggle.value;
     }
+
+    public void AddMoreCoin()
+    {
+        GameManager.Instance.PlayerData.AddCoin(999999);
+    }
 }
