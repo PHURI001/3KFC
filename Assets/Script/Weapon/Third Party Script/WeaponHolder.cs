@@ -47,9 +47,7 @@ public class WeaponHolder : MonoBehaviour
 
         if (mainGun == null) mainGun = GunObj.GetComponent<Abstract_Gun>();
         Data_Stats baseStat = new Data_Stats();
-        baseStat.criticalChance += GameManager.Instance.PlayerData.criticalChance;
-        baseStat.criticalDamage += GameManager.Instance.PlayerData.criticalDamage;
-        baseStat.dropChance += GameManager.Instance.PlayerData.dropChance;
+        (baseStat.criticalChance,baseStat.criticalDamage,baseStat.dropChance) = GameManager.Instance.PlayerData.GetData();
         mainGun?.Init(ignoreTargets , baseStat);
     }
 

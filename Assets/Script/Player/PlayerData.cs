@@ -13,9 +13,10 @@ public enum UpgradeType
 [System.Serializable]
 public class PlayerData : MonoBehaviour
 {
-
     private PlayerShowStats showStats;
     Player player;
+
+    public bool isLoading = false;
 
     //Data
     [SerializeField] private int maxHealth = 100;
@@ -25,12 +26,12 @@ public class PlayerData : MonoBehaviour
 
     [SerializeField] private int gunID = 1;
     [SerializeField] private int bulletID = 1;
-    [SerializeField] private List<int> gunUnlock = new List<int>() { 1};
-    [SerializeField] private List<int> bulletUnlock = new List<int>() { 1};
+    [SerializeField] private List<int> gunUnlock = new List<int>() { 1 };
+    [SerializeField] private List<int> bulletUnlock = new List<int>() { 1 };
 
-    [field: SerializeField] public float criticalChance { get; private set; } = 0.5f;
-    [field: SerializeField] public float criticalDamage { get; private set; } = 2;
-    [field: SerializeField] public float dropChance { get; private set; } = 0.5f;
+    [SerializeField] private float criticalChance = 1;
+    [SerializeField] private float criticalDamage = 1;
+    [SerializeField] private float dropChance = 1;
 
     [SerializeField] private List<bool> LevelUnlock = new List<bool>() { true };
 
@@ -42,8 +43,12 @@ public class PlayerData : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
-        else { Destroy(gameObject); }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void Start()
@@ -53,30 +58,50 @@ public class PlayerData : MonoBehaviour
 
         showStats = GameManager.Instance.showStats;
         showStats.SetCoin(coin);
+
+        dataSave.LoadData();
     }
 
-    public (int,int) GetHealthShield() { return (maxHealth, maxSheild); }
+    public (int, int) GetHealthShield()
+    {
+        return (maxHealth, maxSheild);
+    }
 
     public void SetLevel(int level)
     {
         if (level < 0) { return; }
+
         while (LevelUnlock.Count <= level)
         {
             LevelUnlock.Add(false);
         }
+
         LevelUnlock[level - 1] = true;
+
+        if (!isLoading)
+        {
+            dataSave.SaveData();
+        }
     }
 
     public bool GetLevel(int level)
     {
-        if (level < 0 || level > LevelUnlock.Count) { return false; }
+        if (level < 0 || level > LevelUnlock.Count)
+        {
+            return false;
+        }
+
         return LevelUnlock[level - 1];
     }
 
     //temporary
     public bool CheckLevel(int level)
     {
-        if (LevelUnlock.Count <= level) { return false; }
+        if (LevelUnlock.Count <= level)
+        {
+            return false;
+        }
+
         return LevelUnlock[level];
     }
 
@@ -84,21 +109,40 @@ public class PlayerData : MonoBehaviour
     {
         coin += amount;
 
-        if (showStats == null) { showStats = FindFirstObjectByType<PlayerShowStats>(); }
-            
+        if (showStats == null)
+        {
+            showStats = FindFirstObjectByType<PlayerShowStats>();
+        }
+
         showStats.SetCoin(coin);
+
+        if (!isLoading)
+        {
+            dataSave.SaveData();
+        }
     }
 
     public void SpendCoin(int amount)
     {
         coin -= amount;
 
-        if (showStats == null) { showStats = FindFirstObjectByType<PlayerShowStats>(); }
+        if (showStats == null)
+        {
+            showStats = FindFirstObjectByType<PlayerShowStats>();
+        }
 
         showStats.SetCoin(coin);
+
+        if (!isLoading)
+        {
+            dataSave.SaveData();
+        }
     }
 
-    public int GetCoins() { return coin; }
+    public int GetCoins()
+    {
+        return coin;
+    }
 
     public void ResetAllData()
     {
@@ -116,6 +160,11 @@ public class PlayerData : MonoBehaviour
         LevelUnlock.Add(true);
 
         showStats.SetCoin(coin);
+
+        if (!isLoading)
+        {
+            dataSave.SaveData();
+        }
     }
 
     public void UnlockGun(int gunID)
@@ -124,6 +173,11 @@ public class PlayerData : MonoBehaviour
         {
             gunUnlock.Add(gunID);
             gunUnlock.Sort();
+
+            if (!isLoading)
+            {
+                dataSave.SaveData();
+            }
         }
     }
 
@@ -133,20 +187,37 @@ public class PlayerData : MonoBehaviour
         {
             bulletUnlock.Add(gunID);
             bulletUnlock.Sort();
+
+            if (!isLoading)
+            {
+                dataSave.SaveData();
+            }
         }
     }
+
     public void SetGun(int id)
     {
         gunID = id;
+
+        if (!isLoading)
+        {
+            dataSave.SaveData();
+        }
     }
-    private int upgradeHealthValue = 50;
-    private int upgradeShieldValue = 20;
-    private float upgradeOtherValue = 1f;
 
     public void SetBullet(int id)
     {
         bulletID = id;
+
+        if (!isLoading)
+        {
+            dataSave.SaveData();
+        }
     }
+
+    private int upgradeHealthValue = 5;
+    private int upgradeShieldValue = 2;
+    private float upgradeOtherValue = 0.1f;
 
     public void Upgrade(UpgradeType type)
     {
@@ -155,45 +226,96 @@ public class PlayerData : MonoBehaviour
             case UpgradeType.Health:
                 maxHealth += upgradeHealthValue;
                 break;
+
             case UpgradeType.Shield:
                 maxSheild += upgradeShieldValue;
                 break;
+
             case UpgradeType.CritDamage:
-                criticalDamage += upgradeOtherValue * 3;
+                criticalDamage += upgradeOtherValue;
                 break;
+
             case UpgradeType.CritChance:
                 criticalChance += upgradeOtherValue;
                 break;
+
             case UpgradeType.DropChance:
-                dropChance += upgradeOtherValue / 10;
+                dropChance += upgradeOtherValue;
                 break;
-        };
-        player.Init();
+        }
+
+        showStats.SetStats(criticalChance, criticalDamage, dropChance);
+        if (player != null)
+        {
+            player.Init();
+        }
+
+        if (!isLoading)
+        {
+            dataSave.SaveData();
+        }
     }
 
-    public (float, float, float) GetData() { return (criticalChance, criticalDamage, dropChance); }
+    public (float, float, float) GetData()
+    {
+        return (criticalChance, criticalDamage, dropChance);
+    }
 
-    public int CurrentGun() { return gunID; }
-    public int CurrentBullet() { return bulletID; }
-    public List<int> GetGunUnlock() { return gunUnlock; }
-    public List<int> GetBulletUnlock() { return bulletUnlock; }
+    public int CurrentGun()
+    {
+        return gunID;
+    }
+
+    public int CurrentBullet()
+    {
+        return bulletID;
+    }
+
+    public List<int> GetGunUnlock()
+    {
+        return gunUnlock;
+    }
+
+    public List<int> GetBulletUnlock()
+    {
+        return bulletUnlock;
+    }
 
     public void ResetData()
     {
         maxHealth = 100;
         maxSheild = 50;
+
         coin = 0;
+
         gunID = 1;
         bulletID = 1;
+
         gunUnlock.Clear();
         gunUnlock.Add(1);
+
         bulletUnlock.Clear();
         bulletUnlock.Add(1);
+
         criticalChance = 1;
         criticalDamage = 1;
         dropChance = 1;
+
         LevelUnlock.Clear();
         LevelUnlock.Add(true);
-        showStats.SetCoin(coin);
+
+        if (showStats != null)
+        {
+            showStats.SetCoin(coin);
+            showStats.SetStats(criticalChance, criticalDamage, dropChance);
+        }
+    }
+
+    private void OnApplicationQuit()
+    {
+        if (dataSave != null)
+        {
+            dataSave.SaveData();
+        }
     }
 }
