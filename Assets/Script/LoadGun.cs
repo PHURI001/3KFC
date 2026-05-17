@@ -21,6 +21,6 @@ public class LoadGun : MonoBehaviour
         GameObject bullet = bulletPrefab.GetGunPrefab(playerData.CurrentBullet());
         weaponHolder.SetNewWeapon(gun, bullet);
 
-        //check current gun by using >> playerData.GetGunUnlock()
+        //check current gun by using >> playerData.CurrentGun()
     }
 }
