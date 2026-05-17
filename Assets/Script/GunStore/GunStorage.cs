@@ -15,9 +15,13 @@ public class GunStorage : MonoBehaviour
 
         for (int i = 0; i < GunName.Length; i++)
         {
-            if (playerData.GetGunUnlock().Contains(i + 1))
+            if (playerData.CurrentGun() == i + 1)
             {
-                GunName[i].text = "Sellect";
+                GunName[i].text = "Select";
+            }
+            else if (playerData.GetGunUnlock().Contains(i + 1))
+            {
+                GunName[i].text = "Unlock";
             }
             else
             {
@@ -27,9 +31,13 @@ public class GunStorage : MonoBehaviour
 
         for (int i = 0; i < BulletName.Length; i++)
         {
-            if (playerData.GetBulletUnlock().Contains(i + 1))
+            if (playerData.CurrentBullet() == i + 1)
             {
-                BulletName[i].text = "Sellect";
+                BulletName[i].text = "Select";
+            }
+            else if (playerData.GetBulletUnlock().Contains(i + 1))
+            {
+                BulletName[i].text = "Unlock";
             }
             else
             {
@@ -73,7 +81,6 @@ public class GunStorage : MonoBehaviour
             if (playerData.GetGunUnlock().Contains(index))
             {
                 playerData.SetGun(index);
-                GunName[index - 1].text = "Sellect";
             }
             else
             {
@@ -84,7 +91,6 @@ public class GunStorage : MonoBehaviour
                 playerData.SpendCoin(price);
                 playerData.UnlockGun(index);
                 playerData.SetGun(index);
-                GunName[index - 1].text = "Sellect";
             }
         }
         else if (!type)
@@ -92,7 +98,6 @@ public class GunStorage : MonoBehaviour
             if (playerData.GetBulletUnlock().Contains(index))
             {
                 playerData.SetBullet(index);
-                BulletName[index - 1].text = "Sellect";
             }
             else
             {
@@ -103,8 +108,10 @@ public class GunStorage : MonoBehaviour
                 playerData.SpendCoin(price);
                 playerData.UnlockBullet(index);
                 playerData.SetBullet(index);
-                BulletName[index - 1].text = "Sellect";
             }
         }
+
+        GunName[playerData.CurrentGun() - 1].text = "Sellect";
+        BulletName[playerData.CurrentBullet() - 1].text = "Sellect";
     }
 }
