@@ -520,9 +520,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 086f1a12ab462a74d9c6906bfc9201fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomController
+  endGameUI: {fileID: 0}
   roomsRemaining:
   - {fileID: 1267020059}
   nextLevelUnlock: 0
+  <TotalDamageDeal>k__BackingField: 0
+  <TotalCoinEarn>k__BackingField: 0
+  <TimeToClear>k__BackingField: 0
+  <IsMapClear>k__BackingField: 0
 --- !u!4 &180847502
 Transform:
   m_ObjectHideFlags: 0
@@ -1330,11 +1335,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!4 &1247965546 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8861034382031824790, guid: 95283c9d583ee5e4094e55d1fa4b847a, type: 3}
-  m_PrefabInstance: {fileID: 1132048226989054425}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1267020058
 GameObject:
   m_ObjectHideFlags: 0
@@ -1366,6 +1366,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Room
   waveSpawnManager: {fileID: 0}
+  doors: []
+  fires: []
 --- !u!65 &1267020060
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1559,6 +1561,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EndGameUI
   endGameUIObj: {fileID: 1231751239}
+  time: {fileID: 0}
+  coin: {fileID: 0}
+  damage: {fileID: 0}
 --- !u!1 &1665253642
 GameObject:
   m_ObjectHideFlags: 0
@@ -2063,6 +2068,9 @@ GameObject:
   - component: {fileID: 1905610862}
   - component: {fileID: 1905610861}
   - component: {fileID: 1905610865}
+  - component: {fileID: 1905610868}
+  - component: {fileID: 1905610867}
+  - component: {fileID: 1905610866}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -2086,6 +2094,9 @@ MonoBehaviour:
   SceneManager: {fileID: 0}
   PlayerData: {fileID: 0}
   showStats: {fileID: 0}
+  DataSave: {fileID: 0}
+  GunPrefab: {fileID: 0}
+  BulletPrefab: {fileID: 0}
 --- !u!114 &1905610862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2138,14 +2149,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5950b135bd5c1534ca9554810e36c975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerData
+  maxHealth: 100
+  maxSheild: 50
   coin: 0
   gunID: 0
+  bulletID: 1
   gunUnlock: 
-  criticalChance: 1
-  criticalDamage: 1
-  dropChance: 1
+  bulletUnlock: 01000000
+  <criticalChance>k__BackingField: 0.5
+  <criticalDamage>k__BackingField: 2
+  <dropChance>k__BackingField: 0.5
   LevelUnlock: 01
   dataSave: {fileID: 0}
+--- !u!114 &1905610866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905610860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0948f55e7b91074cafc9bcbde72e0da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BulletPrefab
+  bulletBoxes: []
+--- !u!114 &1905610867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905610860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8b58e5a354fdde46ba6bd7a09eba3ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GunPrefab
+  gunBoxes: []
+--- !u!114 &1905610868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905610860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f2ccba4e9278f34db85615f72df9eb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DataSave
 --- !u!1001 &1132048226989054425
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2194,25 +2247,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1627500811959712950, guid: 95283c9d583ee5e4094e55d1fa4b847a, type: 3}
-      propertyPath: moveSpeed
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1892159943462627269, guid: 95283c9d583ee5e4094e55d1fa4b847a, type: 3}
-      propertyPath: <shootPoint>k__BackingField
-      value: 
-      objectReference: {fileID: 1247965546}
-    - target: {fileID: 6549295335850448258, guid: 95283c9d583ee5e4094e55d1fa4b847a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6704637276815201209, guid: 95283c9d583ee5e4094e55d1fa4b847a, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7925050907668267108, guid: 95283c9d583ee5e4094e55d1fa4b847a, type: 3}
-      propertyPath: m_Constraints
-      value: 80
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

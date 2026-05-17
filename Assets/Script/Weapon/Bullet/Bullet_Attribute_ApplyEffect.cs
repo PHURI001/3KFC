@@ -5,14 +5,16 @@ using UnityEngine;
 public class Bullet_Attribute_ApplyEffect
 {
     private Bullet curretBullet;
+    [SerializeField] private float SlowSpeed = 0.2f;
+    [SerializeField] private float SlowDuration = 2f;
     public void Init(Bullet newBullet)
     {
         curretBullet = newBullet;
     }
 
-    public void ApplyEffect(ITakeDamage target)
+    public void ApplyEffect(Enemy target)
     {
-#warning Do Apply Effect
+        target.Slow(SlowSpeed, SlowDuration);
     }
 
 }

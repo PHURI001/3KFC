@@ -72,12 +72,12 @@ public class Bullet : MonoBehaviour
         //It not Damage Direct To ITakeDamage
         if (Attribute_Explosive.Length != 0)
         {
-            ActiveExplosiveAttribute(Attribute_Explosive);
+            ActiveExplosiveAttribute(Attribute_Explosive, other.GetComponent<Enemy>());
             OnExplode?.Invoke();
         }
         else if (other.TryGetComponent<ITakeDamage>(out ITakeDamage target))
         {
-            DoDamage(target, BaseDamage);
+            DoDamage(target, BaseDamage, other.GetComponent<Enemy>());
         }
 
         OnHit?.Invoke();
@@ -110,7 +110,7 @@ public class Bullet : MonoBehaviour
     }
     #endregion
     #region Public Method
-    public void DoDamage(ITakeDamage target,float NewBaseDamage)
+    public void DoDamage(ITakeDamage target,float NewBaseDamage, Enemy enemy)
     {
         if (ignoreTargets.Contains(target)) return;
 
@@ -126,7 +126,7 @@ public class Bullet : MonoBehaviour
         if (Attribute_ApplyEffect.Length == 0) return;
         foreach (var att in Attribute_ApplyEffect)
         {
-            att.ApplyEffect(target);
+            att.ApplyEffect(enemy);
         }
     }
 
@@ -134,11 +134,11 @@ public class Bullet : MonoBehaviour
     {
         transform.rotation = newRotate;
     }
-    public void ActiveExplosiveAttribute(Bullet_Attribute_Explosive[] attribute)
+    public void ActiveExplosiveAttribute(Bullet_Attribute_Explosive[] attribute, Enemy enemy)
     {
         foreach (var att in attribute)
         {
-            att?.DoExplosive(BaseDamage);
+            att?.DoExplosive(BaseDamage, enemy);
         }
     }
 

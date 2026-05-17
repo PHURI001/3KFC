@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -20,5 +21,10 @@ public class UIManager : MonoBehaviour
         currentUIState?.Exit();
         currentUIState = newState;
         currentUIState?.Enter();
+    }
+
+    public void GoToMain()
+    {
+        GameManager.Instance?.SceneManager.GoToMain();
     }
 }

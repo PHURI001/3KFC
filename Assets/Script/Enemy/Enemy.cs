@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -12,7 +13,8 @@ public class Enemy : MonoBehaviour, ITakeDamage
     [SerializeField] protected float health = 100;
     [SerializeField] protected float speed = 1;
     [SerializeField] protected float strength = 5;
-    [SerializeField] private int DamageTaken = 0; 
+    [SerializeField] private int DamageTaken = 0;
+    [SerializeField] private ParticleSystem slowVFX;
  
     private Rigidbody rb;
     public Transform PlayerLocate;
@@ -25,12 +27,17 @@ public class Enemy : MonoBehaviour, ITakeDamage
     public virtual float Strength { get => strength; protected set => strength = Mathf.Clamp(value, 0, 100); }
     [field: SerializeField] public int coinDropAmount { get; protected set; } = 10;
     [field: SerializeField] public float coinDropChange { get; protected set; } = 0.1f;
+    [field: SerializeField] public float SlowTimeRemaning { get; protected set; } = 0;
+
+    private float originalSpeed;
+    private float slowSpeed;
     protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody>();
         Health = health;
         Speed = speed;
         Strength = strength;
+        originalSpeed = speed;
 
         Agent = GetComponent<NavMeshAgent>();
         Agent.speed = Speed;
@@ -42,6 +49,22 @@ public class Enemy : MonoBehaviour, ITakeDamage
     private void Update()
     {
         MoveToTarget();
+
+        if (SlowTimeRemaning > 0)
+        {
+            SlowTimeRemaning -= Time.deltaTime;
+            speed = slowSpeed;
+            if (!slowVFX.isPlaying)
+                slowVFX.Play();
+        }
+        else
+        {
+            speed = originalSpeed;
+            if (!slowVFX.isStopped)
+                slowVFX.Stop();
+        }
+
+        Agent.speed = speed;
     }
 
 #warning temporary
@@ -72,8 +95,9 @@ public class Enemy : MonoBehaviour, ITakeDamage
         }
     }
 
-    public void Dead()
+    public IEnumerator Dead()
     {
+        yield return null;
         //wave.enemyCount = -1;
         OnDeath?.Invoke();
         Destroy(gameObject);
@@ -81,6 +105,8 @@ public class Enemy : MonoBehaviour, ITakeDamage
 
     public void TakeDamage(Data_Stats dataDamage)
     {
+        if (Health <= 0) return;
+
         //Calculate Damage
         bool isCritical = UnityEngine.Random.Range(0f, 1f) < dataDamage.criticalChance;
         int finalDamage;
@@ -98,17 +124,25 @@ public class Enemy : MonoBehaviour, ITakeDamage
         //Check Death
         if (health - finalDamage <= 0)
         {
+            Health -= finalDamage;
+
             float newCoinDropChance = coinDropChange + dataDamage.dropChance;
-            if ( UnityEngine.Random.Range(0f, 1f) >= newCoinDropChance)
+            if ( UnityEngine.Random.Range(0f, 1f) < newCoinDropChance)
             {
                 OnCoinDrop?.Invoke(coinDropAmount);
                 GameManager.Instance.PlayerData.AddCoin(coinDropAmount);
             }
-            Dead();
+            StartCoroutine(Dead());
         }
         else
         {
             Health -= finalDamage;
         }
+    }
+
+    public void Slow(float speedMultiply,float duration)
+    {
+        SlowTimeRemaning = duration;
+        slowSpeed = speedMultiply;
     }
 }

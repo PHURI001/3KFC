@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
         playerData = GameManager.Instance.PlayerData;
         showStats = GameManager.Instance.showStats;
 
-        GameManager.Instance.DataSave.LoadData();
+        //GameManager.Instance.DataSave.LoadData();
 
         Init();
     }

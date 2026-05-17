@@ -552,11 +552,11 @@ MonoBehaviour:
   bulletBoxes:
   - bulletPrefab: {fileID: 3914273318236099070, guid: a63ba37860d38d443a74a14a552e101b, type: 3}
     id: 1
-  - bulletPrefab: {fileID: 5531160445526992571, guid: 63a3d3e77b1c8de45931070dbfa21057, type: 3}
+  - bulletPrefab: {fileID: 5531160445526992571, guid: 458d481a1cd92ad4bb4016eb4163d49f, type: 3}
     id: 2
-  - bulletPrefab: {fileID: 5531160445526992571, guid: 63a3d3e77b1c8de45931070dbfa21057, type: 3}
+  - bulletPrefab: {fileID: 3914273318236099070, guid: 78e6be49fd9b4d64eb7363a8a6d1ddbd, type: 3}
     id: 3
-  - bulletPrefab: {fileID: 5531160445526992571, guid: 63a3d3e77b1c8de45931070dbfa21057, type: 3}
+  - bulletPrefab: {fileID: 3914273318236099070, guid: 9002bc24f2bbc1340b2dcb1394b475a6, type: 3}
     id: 4
 --- !u!114 &867699295560095191
 MonoBehaviour:

@@ -1018,8 +1018,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SceneManager, Assembly-CSharp
+      - m_Target: {fileID: 3920548616505598941}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: GoToMain
         m_Mode: 1
         m_Arguments:
