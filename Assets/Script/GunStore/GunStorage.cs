@@ -73,6 +73,7 @@ public class GunStorage : MonoBehaviour
             if (playerData.GetGunUnlock().Contains(index))
             {
                 playerData.SetGun(index);
+                GunName[index - 1].text = "Sellect";
             }
             else
             {
@@ -91,6 +92,7 @@ public class GunStorage : MonoBehaviour
             if (playerData.GetBulletUnlock().Contains(index))
             {
                 playerData.SetBullet(index);
+                BulletName[index - 1].text = "Sellect";
             }
             else
             {

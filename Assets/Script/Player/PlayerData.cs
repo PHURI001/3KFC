@@ -29,9 +29,9 @@ public class PlayerData : MonoBehaviour
     [SerializeField] private List<int> gunUnlock = new List<int>() { 1 };
     [SerializeField] private List<int> bulletUnlock = new List<int>() { 1 };
 
-    [SerializeField] private float criticalChance = 1;
-    [SerializeField] private float criticalDamage = 1;
-    [SerializeField] private float dropChance = 1;
+    [SerializeField] private float criticalChance = 50;
+    [SerializeField] private float criticalDamage = 100;
+    [SerializeField] private float dropChance = 50;
 
     [SerializeField] private List<bool> LevelUnlock = new List<bool>() { true };
 
@@ -215,9 +215,9 @@ public class PlayerData : MonoBehaviour
         }
     }
 
-    private int upgradeHealthValue = 5;
-    private int upgradeShieldValue = 2;
-    private float upgradeOtherValue = 0.1f;
+    private int upgradeHealthValue = 50;
+    private int upgradeShieldValue = 20;
+    private float upgradeOtherValue = 5f;
 
     public void Upgrade(UpgradeType type)
     {
@@ -232,7 +232,7 @@ public class PlayerData : MonoBehaviour
                 break;
 
             case UpgradeType.CritDamage:
-                criticalDamage += upgradeOtherValue;
+                criticalDamage += upgradeOtherValue * 5;
                 break;
 
             case UpgradeType.CritChance:
@@ -286,7 +286,7 @@ public class PlayerData : MonoBehaviour
         maxHealth = 100;
         maxSheild = 50;
 
-        coin = 0;
+        coin = 100;
 
         gunID = 1;
         bulletID = 1;
@@ -297,9 +297,9 @@ public class PlayerData : MonoBehaviour
         bulletUnlock.Clear();
         bulletUnlock.Add(1);
 
-        criticalChance = 1;
-        criticalDamage = 1;
-        dropChance = 1;
+        criticalChance = 50;
+        criticalDamage = 100;
+        dropChance = 50;
 
         LevelUnlock.Clear();
         LevelUnlock.Add(true);

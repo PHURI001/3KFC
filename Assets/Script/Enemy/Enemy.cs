@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour, ITakeDamage
     public virtual float Speed { get => speed; protected set => speed = Mathf.Clamp(value, 0, 20); }
     public virtual float Strength { get => strength; protected set => strength = Mathf.Clamp(value, 0, 100); }
     [field: SerializeField] public int coinDropAmount { get; protected set; } = 10;
-    [field: SerializeField] public float coinDropChange { get; protected set; } = 0.1f;
+    [field: SerializeField] public float coinDropChange { get; protected set; } = 5f;
     [field: SerializeField] public float SlowTimeRemaning { get; protected set; } = 0;
 
     private float originalSpeed;
@@ -108,12 +108,12 @@ public class Enemy : MonoBehaviour, ITakeDamage
         if (Health <= 0) return;
 
         //Calculate Damage
-        bool isCritical = UnityEngine.Random.Range(0f, 1f) < dataDamage.criticalChance;
+        bool isCritical = UnityEngine.Random.Range(0f, 100f) < dataDamage.criticalChance;
         int finalDamage;
         Debug.Log(dataDamage.damage);
         if (isCritical)
         {
-            finalDamage = Mathf.RoundToInt(dataDamage.damage * dataDamage.criticalDamage);
+            finalDamage = Mathf.RoundToInt(dataDamage.damage * (dataDamage.criticalDamage / 100));
         }
         else
         {
@@ -127,7 +127,7 @@ public class Enemy : MonoBehaviour, ITakeDamage
             Health -= finalDamage;
 
             float newCoinDropChance = coinDropChange + dataDamage.dropChance;
-            if ( UnityEngine.Random.Range(0f, 1f) < newCoinDropChance)
+            if ( UnityEngine.Random.Range(0f, 100f) < newCoinDropChance)
             {
                 OnCoinDrop?.Invoke(coinDropAmount);
                 GameManager.Instance.PlayerData.AddCoin(coinDropAmount);
