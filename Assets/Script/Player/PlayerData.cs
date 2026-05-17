@@ -26,6 +26,7 @@ public class PlayerData : MonoBehaviour
     [SerializeField] private int gunID = 1;
     [SerializeField] private int bulletID = 1;
     [SerializeField] private List<int> gunUnlock = new List<int>() { 1};
+    [SerializeField] private List<int> bulletUnlock = new List<int>() { 1};
 
     [SerializeField] private float criticalChance = 1;
     [SerializeField] private float criticalDamage = 1;
@@ -125,9 +126,23 @@ public class PlayerData : MonoBehaviour
             gunUnlock.Sort();
         }
     }
+
+    public void UnlockBullet(int gunID)
+    {
+        if (!bulletUnlock.Contains(gunID))
+        {
+            bulletUnlock.Add(gunID);
+            bulletUnlock.Sort();
+        }
+    }
     public void SetGun(int id)
     {
         gunID = id;
+    }
+
+    public void SetBullet(int id)
+    {
+        bulletID = id;
     }
 
     private int upgradeHealthValue = 5;
@@ -161,4 +176,5 @@ public class PlayerData : MonoBehaviour
     public int CurrentGun() { return gunID; }
     public int CurrentBullet() { return bulletID; }
     public List<int> GetGunUnlock() { return gunUnlock; }
+    public List<int> GetBulletUnlock() { return bulletUnlock; }
 }
