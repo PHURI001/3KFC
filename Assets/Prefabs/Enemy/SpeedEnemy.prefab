@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8652863976253332548}
   - component: {fileID: 4281220092278308156}
   - component: {fileID: 7271339569655506101}
+  - component: {fileID: 1720794311991078568}
   m_Layer: 0
   m_Name: SpeedEnemy
   m_TagString: Enemy
@@ -70,7 +71,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 5c1ae644e201f30498521e515e05f73e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -183,8 +184,18 @@ MonoBehaviour:
   strength: 10
   PlayerLocate: {fileID: 0}
   Agent: {fileID: 8652863976253332548}
-  wave:
-    enemyPrefabs: []
-    enemyCount: 0
-    spawnInterval: 1.5
-    waveInterval: 5
+  <coinDropAmount>k__BackingField: 10
+  <coinDropChange>k__BackingField: 0.1
+--- !u!114 &1720794311991078568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9067085699953358134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c59d5f351c8de64ea9be87334a53b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MapDataTracker
+  enemy: {fileID: 7271339569655506101}

@@ -70,7 +70,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 685f37b74b728c64093c7de6258aa6c7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -183,8 +183,5 @@ MonoBehaviour:
   strength: 10
   PlayerLocate: {fileID: 7312419294497473134}
   Agent: {fileID: 4860888950713506867}
-  wave:
-    enemyPrefabs: []
-    enemyCount: 0
-    spawnInterval: 1.5
-    waveInterval: 5
+  <coinDropAmount>k__BackingField: 10
+  <coinDropChange>k__BackingField: 0.1

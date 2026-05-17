@@ -11,7 +11,7 @@ public class WaveController : MonoBehaviour
     public bool IsComplete()
     {
         bool enemyAlive = FindFirstObjectByType<Enemy>();
-        Debug.Log(enemyAlive);
+        //Debug.Log(enemyAlive);
         return enemiesSpawned >= currentWave?.enemyCount && !enemyAlive;
     }
 

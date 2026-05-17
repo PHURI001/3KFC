@@ -15,7 +15,7 @@ public abstract class Abstract_Gun : MonoBehaviour
 
     private List<ITakeDamage> ignoreTargets;
     private float nextTimeShoot = float.MinValue;
-    private bool isFiring = false;
+    protected bool isFiring = false;
     public void SetGunFire(bool toggle)
     {
         isFiring = toggle;
@@ -23,7 +23,7 @@ public abstract class Abstract_Gun : MonoBehaviour
 
     public abstract void Shoot();
 
-    private void Update()
+    protected virtual void Update()
     {
         if (Time.time < nextTimeShoot) return;
 

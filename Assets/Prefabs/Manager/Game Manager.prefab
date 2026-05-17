@@ -119,7 +119,7 @@ MonoBehaviour:
     id: 3
   - gunPrefab: {fileID: 7438629858300112411, guid: c9c573335d02970428647211830fa868, type: 3}
     id: 4
-  - gunPrefab: {fileID: 7438629858300112411, guid: c9c573335d02970428647211830fa868, type: 3}
+  - gunPrefab: {fileID: 7052802698942321856, guid: 84662ba5fbcd22a4a8ca6633f8e243b2, type: 3}
     id: 5
 --- !u!114 &5701289226428280109
 MonoBehaviour:

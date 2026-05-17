@@ -45,6 +45,7 @@ public class WeaponHolder : MonoBehaviour
         mainGun.Bullet = bulletPrefab;
 
         if (mainGun == null) mainGun = GunObj.GetComponent<Abstract_Gun>();
+        mainGun?.Init(ignoreTargets);
     }
 
     private void Update()

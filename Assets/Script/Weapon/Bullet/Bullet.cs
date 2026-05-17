@@ -158,8 +158,7 @@ public class Bullet : MonoBehaviour
         {
             if (col == null) continue;
             ITakeDamage comp = col.GetComponentInParent<ITakeDamage>();
-            Debug.Log($"ignoreTargets count: {ignoreTargets.Count}");
-            Debug.Log($"Contains result: {ignoreTargets.Contains(comp)}");
+
             if (comp == null) continue;
             if (ignoreTargets.Contains(comp)) continue;
             posibleTargets.Add(col.transform);
