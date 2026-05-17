@@ -72,5 +72,7 @@ public class DataSave : MonoBehaviour
         {
             File.Delete(path);
         }
+        GameManager.Instance.PlayerData.ResetData();
+        SaveData();
     }
 }

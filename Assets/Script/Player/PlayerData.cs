@@ -177,4 +177,23 @@ public class PlayerData : MonoBehaviour
     public int CurrentBullet() { return bulletID; }
     public List<int> GetGunUnlock() { return gunUnlock; }
     public List<int> GetBulletUnlock() { return bulletUnlock; }
+
+    public void ResetData()
+    {
+        maxHealth = 100;
+        maxSheild = 50;
+        coin = 0;
+        gunID = 1;
+        bulletID = 1;
+        gunUnlock.Clear();
+        gunUnlock.Add(1);
+        bulletUnlock.Clear();
+        bulletUnlock.Add(1);
+        criticalChance = 1;
+        criticalDamage = 1;
+        dropChance = 1;
+        LevelUnlock.Clear();
+        LevelUnlock.Add(true);
+        showStats.SetCoin(coin);
+    }
 }
