@@ -44,6 +44,30 @@ public class GunStorage : MonoBehaviour
     //type 0 = gun, 1 = bullet
     public void BuyAndSellect(bool type, int index)
     {
+        for (int i = 0; i < GunName.Length; i++)
+        {
+            if (playerData.GetGunUnlock().Contains(i + 1))
+            {
+                GunName[i].text = "Unlock";
+            }
+            else
+            {
+                GunName[i].text = "Buy";
+            }
+        }
+
+        for (int i = 0; i < BulletName.Length; i++)
+        {
+            if (playerData.GetBulletUnlock().Contains(i + 1))
+            {
+                BulletName[i].text = "Unlock";
+            }
+            else
+            {
+                BulletName[i].text = "Buy";
+            }
+        }
+
         if (type)
         {
             if (playerData.GetGunUnlock().Contains(index))
