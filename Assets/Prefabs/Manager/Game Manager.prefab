@@ -75,15 +75,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5950b135bd5c1534ca9554810e36c975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerData
-  maxHealth: 10
-  maxSheild: 5
+  maxHealth: 100
+  maxSheild: 50
   coin: 0
   gunID: 1
   bulletID: 1
   gunUnlock: 01000000
-  criticalChance: 1
-  criticalDamage: 1
-  dropChance: 1
+  <criticalChance>k__BackingField: 0.5
+  <criticalDamage>k__BackingField: 2
+  <dropChance>k__BackingField: 0.5
   LevelUnlock: 01
   dataSave: {fileID: 0}
 --- !u!114 &2910546886252505877

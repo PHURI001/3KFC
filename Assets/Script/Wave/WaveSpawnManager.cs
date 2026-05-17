@@ -13,6 +13,7 @@ public class WaveSpawnManager : MonoBehaviour
     private float waveEndTime = 0f;
 
     private bool isAlreadyClear = false;
+    private bool isStart = false;
 
     void StartWave()
     {
@@ -20,6 +21,7 @@ public class WaveSpawnManager : MonoBehaviour
 
     void Update()
     {
+        if (isStart == false) return;
         if (isAlreadyClear) return;
 
         //Debug.Log($"IsComplete{waveController.IsComplete()}");
@@ -50,6 +52,7 @@ public class WaveSpawnManager : MonoBehaviour
             waveController.StartWave(waveConfigurations[currentWave]);
             waveEndTime = Time.time + waveConfigurations[currentWave].waveInterval;
             OnStartWave?.Invoke();
+            isStart = true;
         }
     }
 }

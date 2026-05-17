@@ -127,8 +127,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c39c66a9f2dafc40ba4d3c81c589491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
-  <BaseDamage>k__BackingField: 30
+  <BaseDamage>k__BackingField: 9999
   <speed>k__BackingField: 1
+  <lifeTime>k__BackingField: 10
   Attribute_Move:
     <HomingRange>k__BackingField: 10
     HomingStrength: 100
@@ -168,7 +169,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &5581621017407791879
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -17,12 +17,12 @@ public class MapDataTracker : MonoBehaviour
     }
 
 
-    private void AddCoinDropData(int amount)
+    public void AddCoinDropData(int amount)
     {
         RoomController.Instance.TotalCoinEarn += amount;
     }
 
-    private void AddDamageDealData(int amount)
+    public void AddDamageDealData(int amount)
     {
         RoomController.Instance.TotalDamageDeal += amount;
     }

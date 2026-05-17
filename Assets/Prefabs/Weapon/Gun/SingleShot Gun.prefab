@@ -107,7 +107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Gun_SingleShot
   <shootPoint>k__BackingField: {fileID: 5125132435728440335}
   <Bullet>k__BackingField: {fileID: 3914273318236099070, guid: a63ba37860d38d443a74a14a552e101b, type: 3}
-  reloadTime: 1
+  reloadTime: 0.5
   data: {fileID: 11400000, guid: a42814c0277eef740bceb546e865a2dd, type: 2}
 --- !u!1 &8238981879881167591
 GameObject:

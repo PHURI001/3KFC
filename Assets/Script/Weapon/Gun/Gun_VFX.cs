@@ -21,7 +21,7 @@ public class Gun_VFX : MonoBehaviour
 
     private void SpawnShootVFX()
     {
-        Instantiate(VFXShoot, mainGun.transform.position, mainGun.transform.rotation);
+        Destroy(Instantiate(VFXShoot, mainGun.transform.position, mainGun.transform.rotation), 2f);
     }
 
     private void PlayBulletShellVFX()

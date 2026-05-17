@@ -18,8 +18,8 @@ public class PlayerData : MonoBehaviour
     Player player;
 
     //Data
-    [SerializeField] private int maxHealth = 10;
-    [SerializeField] private int maxSheild = 5;
+    [SerializeField] private int maxHealth = 100;
+    [SerializeField] private int maxSheild = 50;
 
     [SerializeField] private int coin;
 
@@ -27,9 +27,9 @@ public class PlayerData : MonoBehaviour
     [SerializeField] private int bulletID = 1;
     [SerializeField] private List<int> gunUnlock = new List<int>() { 1};
 
-    [SerializeField] private float criticalChance = 1;
-    [SerializeField] private float criticalDamage = 1;
-    [SerializeField] private float dropChance = 1;
+    [field: SerializeField] public float criticalChance { get; private set; } = 0.5f;
+    [field: SerializeField] public float criticalDamage { get; private set; } = 2;
+    [field: SerializeField] public float dropChance { get; private set; } = 0.5f;
 
     [SerializeField] private List<bool> LevelUnlock = new List<bool>() { true };
 
@@ -130,9 +130,9 @@ public class PlayerData : MonoBehaviour
         gunID = id;
     }
 
-    private int upgradeHealthValue = 5;
-    private int upgradeShieldValue = 2;
-    private float upgradeOtherValue = 0.1f;
+    private int upgradeHealthValue = 50;
+    private int upgradeShieldValue = 20;
+    private float upgradeOtherValue = 1f;
     public void Upgrade(UpgradeType type)
     {
         switch (type)

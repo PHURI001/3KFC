@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -27,7 +28,7 @@ public class WeaponHolder : MonoBehaviour
     private void OnEnable()
     {
         UpdateIgnoreTarget();
-        mainGun?.Init(ignoreTargets);
+        mainGun?.Init(ignoreTargets , new Data_Stats());
     }
 
     public void Shoot(bool toggle)
@@ -45,7 +46,11 @@ public class WeaponHolder : MonoBehaviour
         mainGun.Bullet = bulletPrefab;
 
         if (mainGun == null) mainGun = GunObj.GetComponent<Abstract_Gun>();
-        mainGun?.Init(ignoreTargets);
+        Data_Stats baseStat = new Data_Stats();
+        baseStat.criticalChance += GameManager.Instance.PlayerData.criticalChance;
+        baseStat.criticalDamage += GameManager.Instance.PlayerData.criticalDamage;
+        baseStat.dropChance += GameManager.Instance.PlayerData.dropChance;
+        mainGun?.Init(ignoreTargets , baseStat);
     }
 
     private void Update()

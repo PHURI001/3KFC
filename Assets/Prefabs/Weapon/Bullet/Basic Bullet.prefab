@@ -128,12 +128,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
   <BaseDamage>k__BackingField: 50
   <speed>k__BackingField: 1
+  <lifeTime>k__BackingField: 10
   Attribute_Move:
     <HomingRange>k__BackingField: 0
     HomingStrength: 100
   Attribute_Explosive: []
   Attribute_ApplyEffect: []
-  IsPierce: 0
+  isPierce: 0
+  bouncesCheckLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  bouncesCheckDistance: 1.5
+  maxBounces: 0
 --- !u!54 &6746479886830023681
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -160,4 +166,4 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
