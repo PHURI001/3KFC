@@ -244,6 +244,7 @@ public class PlayerData : MonoBehaviour
                 break;
         }
 
+        showStats.SetStats(criticalChance, criticalDamage, dropChance);
         if (player != null)
         {
             player.Init();
@@ -306,6 +307,7 @@ public class PlayerData : MonoBehaviour
         if (showStats != null)
         {
             showStats.SetCoin(coin);
+            showStats.SetStats(criticalChance, criticalDamage, dropChance);
         }
     }
 
