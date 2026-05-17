@@ -18,8 +18,8 @@ public class PlayerData : MonoBehaviour
     Player player;
 
     //Data
-    [SerializeField] private int maxHealth = 10;
-    [SerializeField] private int maxSheild = 5;
+    [SerializeField] private int maxHealth = 100;
+    [SerializeField] private int maxSheild = 50;
 
     [SerializeField] private int coin;
 
