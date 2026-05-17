@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class Bullet : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class Bullet : MonoBehaviour
 
     private int bounceCount = 0;
     private List<ITakeDamage> ignoreTargets = new List<ITakeDamage>();
+    private Data_Stats baseStat = new Data_Stats();
     #region MainLogic
     private void Awake()
     {
@@ -31,9 +33,10 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject, lifeTime);
     }
 
-    public void Init(float _speed, List<ITakeDamage> _ignoreTarget)
+    public void Init(float _speed, List<ITakeDamage> _ignoreTarget, Data_Stats newStat)
     {
         ignoreTargets = _ignoreTarget;
+        baseStat = newStat;
         Init(_speed);
     }
 
@@ -62,6 +65,9 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (ignoreTargets.Contains(other.GetComponent<ITakeDamage>())) return;
+        if (other.gameObject.CompareTag("Player")) return;
+
         //If have Explosive Use Explosive
         //It not Damage Direct To ITakeDamage
         if (Attribute_Explosive.Length != 0)
@@ -109,6 +115,10 @@ public class Bullet : MonoBehaviour
         if (ignoreTargets.Contains(target)) return;
 
         Data_Stats stats = new Data_Stats();
+        stats.damage += baseStat.damage;
+        stats.criticalChance += baseStat.criticalChance;
+        stats.criticalDamage += baseStat.criticalDamage;
+        stats.dropChance += baseStat.dropChance;
         stats.damage = (int)(NewBaseDamage);
         target.TakeDamage(stats);
         OnDoDamage?.Invoke();
@@ -158,8 +168,7 @@ public class Bullet : MonoBehaviour
         {
             if (col == null) continue;
             ITakeDamage comp = col.GetComponentInParent<ITakeDamage>();
-            Debug.Log($"ignoreTargets count: {ignoreTargets.Count}");
-            Debug.Log($"Contains result: {ignoreTargets.Contains(comp)}");
+
             if (comp == null) continue;
             if (ignoreTargets.Contains(comp)) continue;
             posibleTargets.Add(col.transform);

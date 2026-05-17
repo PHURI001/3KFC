@@ -1,20 +1,30 @@
+using System;
 using UnityEngine;
 
 public class WaveSpawnManager : MonoBehaviour
 {
+    public Action OnAllwaveComplete;
+    public Action OnStartWave;
+
     public Wave[] waveConfigurations;
     public WaveController waveController;
 
     private int currentWave = 0;
     private float waveEndTime = 0f;
 
-    void Start()
+    private bool isAlreadyClear = false;
+    private bool isStart = false;
+
+    void StartWave()
     {
     }
 
     void Update()
     {
-        Debug.Log($"IsComplete{waveController.IsComplete()}");
+        if (isStart == false) return;
+        if (isAlreadyClear) return;
+
+        //Debug.Log($"IsComplete{waveController.IsComplete()}");
         if (currentWave >= waveConfigurations.Length)
             return;
 
@@ -24,6 +34,8 @@ public class WaveSpawnManager : MonoBehaviour
             if (currentWave >= waveConfigurations.Length)
             {
                 Debug.Log("All waves completed!");
+                OnAllwaveComplete?.Invoke();
+                isAlreadyClear = true;
             }
             else
             {
@@ -39,6 +51,8 @@ public class WaveSpawnManager : MonoBehaviour
         {
             waveController.StartWave(waveConfigurations[currentWave]);
             waveEndTime = Time.time + waveConfigurations[currentWave].waveInterval;
+            OnStartWave?.Invoke();
+            isStart = true;
         }
     }
 }

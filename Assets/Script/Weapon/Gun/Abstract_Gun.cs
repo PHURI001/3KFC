@@ -14,8 +14,9 @@ public abstract class Abstract_Gun : MonoBehaviour
     [SerializeField]private float reloadTime = 1f;
 
     private List<ITakeDamage> ignoreTargets;
+    private Data_Stats baseStat;
     private float nextTimeShoot = float.MinValue;
-    private bool isFiring = false;
+    protected bool isFiring = false;
     public void SetGunFire(bool toggle)
     {
         isFiring = toggle;
@@ -23,7 +24,7 @@ public abstract class Abstract_Gun : MonoBehaviour
 
     public abstract void Shoot();
 
-    private void Update()
+    protected virtual void Update()
     {
         if (Time.time < nextTimeShoot) return;
 
@@ -34,9 +35,10 @@ public abstract class Abstract_Gun : MonoBehaviour
         }
     }
 
-    public void Init(List<ITakeDamage> _ignoreTargets)
+    public void Init(List<ITakeDamage> _ignoreTargets, Data_Stats newBaseStat)
     {
         ignoreTargets = _ignoreTargets;
+        baseStat = newBaseStat;
     }
 
     protected void SpawnBullet(GameObject bullet, Vector3 spawnPos, Vector3 dir, float speed)
@@ -44,7 +46,7 @@ public abstract class Abstract_Gun : MonoBehaviour
         GameObject obj = Instantiate(bullet, spawnPos, Quaternion.LookRotation(dir));
         if (obj.TryGetComponent<Bullet>(out Bullet comp))
         {
-            comp.Init(speed, ignoreTargets);
+            comp.Init(speed, ignoreTargets, baseStat);
         }
 
         OnShoot?.Invoke();

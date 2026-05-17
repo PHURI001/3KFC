@@ -63,6 +63,7 @@ public class RoomController : MonoBehaviour
         GameManager.Instance.PlayerData.SetLevel(nextLevelUnlock);
         endGameUI.gameObject.SetActive(true);
         endGameUI.OpenUI(TimeToClear, TotalCoinEarn, TotalDamageDeal);
+        GameManager.Instance.DataSave.SaveData();
         //GameManager.Instance.SceneManager.GoToMain();
     }
 

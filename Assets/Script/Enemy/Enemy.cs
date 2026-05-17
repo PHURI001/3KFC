@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour, ITakeDamage
     [SerializeField] protected float health = 100;
     [SerializeField] protected float speed = 1;
     [SerializeField] protected float strength = 5;
+    [SerializeField] private int DamageTaken = 0; 
  
     private Rigidbody rb;
     public Transform PlayerLocate;
@@ -33,7 +34,7 @@ public class Enemy : MonoBehaviour, ITakeDamage
 
         Agent = GetComponent<NavMeshAgent>();
         Agent.speed = Speed;
-        Agent.stoppingDistance = ((gameObject.transform.localScale.x + gameObject.transform.localScale.z) / 2) + 15;
+        //Agent.stoppingDistance = ((gameObject.transform.localScale.x + gameObject.transform.localScale.z) / 2) + 15;
 
         PlayerLocate = GameObject.FindGameObjectWithTag("Player").transform;
     }
@@ -83,6 +84,7 @@ public class Enemy : MonoBehaviour, ITakeDamage
         //Calculate Damage
         bool isCritical = UnityEngine.Random.Range(0f, 1f) < dataDamage.criticalChance;
         int finalDamage;
+        Debug.Log(dataDamage.damage);
         if (isCritical)
         {
             finalDamage = Mathf.RoundToInt(dataDamage.damage * dataDamage.criticalDamage);
@@ -92,15 +94,15 @@ public class Enemy : MonoBehaviour, ITakeDamage
             finalDamage = dataDamage.damage;
         }
         OnTakeDamage?.Invoke(finalDamage);
-
+        DamageTaken += finalDamage;
         //Check Death
         if (health - finalDamage <= 0)
         {
             float newCoinDropChance = coinDropChange + dataDamage.dropChance;
             if ( UnityEngine.Random.Range(0f, 1f) >= newCoinDropChance)
             {
-                GameManager.Instance.PlayerData.AddCoin(coinDropAmount);
                 OnCoinDrop?.Invoke(coinDropAmount);
+                GameManager.Instance.PlayerData.AddCoin(coinDropAmount);
             }
             Dead();
         }
